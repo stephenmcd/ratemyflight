@@ -9,6 +9,7 @@ admin.autodiscover()
 
 urlpatterns = patterns("",
     ("^admin/", include(admin.site.urls)),
+    url("^api/", include("core.urls")),
     url("^$", direct_to_template, {"template": "index.html"}, name="home"),
 )
 
