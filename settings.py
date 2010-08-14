@@ -74,7 +74,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
-ROOT_URLCONF = 'ratemyflight.urls'
+ROOT_URLCONF = "%s.urls" % project_dir
 
 TEMPLATE_DIRS = (os.path.join(project_path, "templates"),)
 
