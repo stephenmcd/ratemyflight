@@ -83,7 +83,7 @@ class Rating(models.Model):
         ordering = ("-id",)
 
     def __unicode__(self):
-        return str(self.value)
+        return "%s: %s/10" % (self.name, self.value)
 
     def avatar_link(self):
         return "<img src='%s' />" % self.avatar_url
