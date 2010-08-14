@@ -59,7 +59,7 @@ class Rating(models.Model):
    
     name = models.CharField(_("Name"), max_length=100)
     avatar_url = models.URLField(_("Avatar URL"))
-    value = models.PositiveIntegerField(_("Value"))
+    value = models.FloatField(_("Value"))
     time = models.DateTimeField("Date/Time", auto_now_add=True)
     flight = models.CharField(_("Flight number"), max_length=10,
         blank=True, null=True)
