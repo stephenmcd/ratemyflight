@@ -8,7 +8,7 @@ class Airline(models.Model):
     callsign = models.CharField(_("Call sign"), max_length=100, blank=True, 
         null=True)
     country = models.ForeignKey("Country", related_name="airlines", null=True)
-    iata_code = models.CharField(_("IATA Code"), max_length=2, blank=True, 
+    iata_code = models.CharField(_("IATA Code"), max_length=3, blank=True, 
         null=True)
     icao_code = models.CharField(_("ICAO Code"), max_length=3, blank=True, 
         null=True)
