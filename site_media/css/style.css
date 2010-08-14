@@ -1,0 +1,45 @@
+/**
+    base CSS file for the website
+    
+**/
+
+
+body {
+    background: #66cbe7;
+    font-family: helvetica, arial, sans serif;
+    font-size: 12pt;
+
+}
+
+
+div#header {
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+header h1 {
+    color: #000;
+}
+
+div#map_holder {
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    background: #fff;
+    -moz-box-shadow: 10px 10px 10px #888;
+}
+
+div#map_canvas {
+    width: 1000px;
+    height: 500px;
+}
+
+div#footer {
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+    
+

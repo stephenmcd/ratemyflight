@@ -11,10 +11,14 @@
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/style.css" >
 
     <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.js"></script>
-
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/map_base.js"></script>
+    <script type="text/javascript">
+        window.onload = loadGMapScript;
+    </script>
 
     {% block extra_head %}{% endblock %}
 
+    
     {% include "includes/ga_code.html" %}
 
 
@@ -29,7 +33,7 @@
     
     </div>
     <div id="map_holder">
-        
+        <div id="map_canvas"></div>
     </div>
     <div id="search_bar">
     
