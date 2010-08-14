@@ -86,8 +86,7 @@ class Rating(models.Model):
         return str(self.value)
 
     def avatar_link(self):
-        return "<img style='vertical-align:middle; margin-right:3px;' " \
-            "src='%s' />" % self.avatar_url
+        return "<img src='%s' />" % self.avatar_url
     avatar_link.allow_tags = True
     avatar_link.short_description = ""
 
