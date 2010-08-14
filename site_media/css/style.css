@@ -23,6 +23,24 @@ header h1 {
     color: #231f20;
 }
 
+div#message {
+    background: #bbb;
+    text-align: left;
+    -moz-box-shadow: 10px 10px 10px #231f20;
+    -webkit-box-shadow: 10px 10px 10px #231f20;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #231f20;
+}
+
+div#message h2 {
+    margin: 0;
+    font-size: 14pt;
+}
+
+div#message p {
+    font-size: 11pt;
+}
 
 div#map_holder {
     background: #fff;
