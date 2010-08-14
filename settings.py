@@ -112,3 +112,8 @@ if "debug_toolbar" in INSTALLED_APPS:
     DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
     MIDDLEWARE_CLASSES += ("debug_toolbar.middleware.DebugToolbarMiddleware",)
 
+# Local settings.
+try:
+    from local_settings import *
+except ImportError:
+    pass
