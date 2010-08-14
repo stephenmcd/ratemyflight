@@ -20,15 +20,17 @@ div#header {
 }
 
 header h1 {
-    color: #000;
+    color: #231f20;
 }
 
+
 div#map_holder {
+    background: #fff;
     width: 1000px;
     margin: 0 auto;
     text-align: center;
-    background: #fff;
-    -moz-box-shadow: 10px 10px 10px #888;
+    -moz-box-shadow: 10px 10px 10px #231f20;
+    margin-bottom: 20px;
 }
 
 div#map_canvas {
@@ -36,10 +38,55 @@ div#map_canvas {
     height: 500px;
 }
 
+div#form_rater {
+    width: 500px;
+    height: 30px;
+    background: #231f20;
+    color: #888;
+    position: absolute;
+    z-index: 3;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+
+}
+
+div#form_rater h2 {
+    text-align: center;
+    
+}
+
+/**div#form_rater {
+    width: 500px;
+    height: 40px;
+    background: #fff;
+    text-align: center;
+    position: absolute;
+    
+}**/
+
+div#form_rater h2 {
+    font-size: 14pt;
+    margin: 0 auto;
+
+}
+    
+
+
 div#footer {
     width: 1000px;
     margin: 0 auto;
     text-align: center;
 }
-    
+
+
+
+div#footer > p {
+    font-size: 10pt;
+    color: #231f20;
+}
+
+.cl {
+   clear: both;
+} 
 
