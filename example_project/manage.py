@@ -1,4 +1,20 @@
 #!/usr/bin/env python
+
+# When project_template is used as the actual project during Mezzanine
+# development, insert the development path into sys.path so that the
+# development version of Mezzanine is used rather than the installed version.
+import os
+import sys
+project_path = os.path.dirname(os.path.abspath(__file__))
+project_dir = project_path.split(os.sep)[-1]
+if project_dir == "example_project":
+    dev_path = os.path.abspath(os.path.join(project_path, ".."))
+    if dev_path not in sys.path:
+        sys.path.insert(0, dev_path)
+    import ratemyflight
+    ratemyflight_path = os.path.dirname(os.path.abspath(ratemyflight.__file__))
+    assert os.path.abspath(os.path.join(ratemyflight_path, "..")) == dev_path
+
 from django.core.management import execute_manager
 try:
     import settings # Assumed to be in the same directory.

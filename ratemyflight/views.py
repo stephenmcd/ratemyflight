@@ -1,8 +1,8 @@
 from django.core import serializers
 from django.http import HttpResponse
 
-from core.models import Airport
-from core.settings import MAX_AIRPORTS
+from ratemyflight.models import Airport
+from ratemyflight.settings import MAX_AIRPORTS
 
 
 def airports_for_boundary(request, south, west, north, east):

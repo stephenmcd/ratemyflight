@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
-from core.models import Airline, Airport, Country, Rating
+from ratemyflight.models import Airline, Airport, Country, Rating
 
 
 class AirlineAdmin(admin.ModelAdmin):

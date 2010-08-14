@@ -6,7 +6,7 @@ from urllib2 import urlopen, quote, HTTPError
 from django.core.management.base import NoArgsCommand
 from django.utils.simplejson import loads
 
-from core.models import Airline, Airport, Rating
+from ratemyflight.models import Airline, Airport, Rating
 
 
 hashtag = "#ratemyflight"
