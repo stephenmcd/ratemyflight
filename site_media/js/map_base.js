@@ -39,13 +39,30 @@ function initialize() {
                                           '/' + ne.lat() + '/' + ne.lng();
       $("#map_data").text(apiurl);
 
-       
+       $.getJSON(apiurl, null, DisplayAirports);
    
     }
 
-    function DisplayAirports() {
+    function DisplayAirports(data) {
       // this function plots the airports on the map.
-            $("#map_data").text("displayed airports");
+            //$("#map_data").text("displayed airports");
+            
+       for (i=0; i< data.length; i++) {
+         item = data[i];
+         lat = item.fields["latitude"];
+         lng = item.fields["longitude"];
+         n = item.fields["name"];
+         
+         var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(lat, lng), 
+          map: map,
+          title:n
+          });  
+         
+       
+       }
+            
+            
     }
 
 
