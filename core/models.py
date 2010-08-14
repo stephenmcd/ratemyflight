@@ -5,8 +5,9 @@ from django.utils.translation import ugettext_lazy as _
 class Airline(models.Model):
    
     name = models.CharField(_("Name"), max_length=100)
-    callsign = models.CharField(_("Call sign"), max_length=100)
-    country = models.ForeignKey("Country", related_name="airlines")
+    callsign = models.CharField(_("Call sign"), max_length=100, blank=True, 
+        null=True)
+    country = models.ForeignKey("Country", related_name="airlines", null=True)
     iata_code = models.CharField(_("IATA Code"), max_length=2, blank=True, 
         null=True)
     icao_code = models.CharField(_("ICAO Code"), max_length=3, blank=True, 
@@ -15,9 +16,11 @@ class Airline(models.Model):
     class Meta:
         verbose_name = _("Airline")
         verbose_name_plural = _("Airlines")
+        ordering = ("name",)
 
     def __unicode__(self):
         return self.name
+
 
 class Airport(models.Model):
     
@@ -33,9 +36,11 @@ class Airport(models.Model):
     class Meta:
         verbose_name = _("Airport")
         verbose_name_plural = _("Airports")
+        ordering = ("name",)
 
     def __unicode__(self):
         return self.name
+
 
 class Country(models.Model):
 
@@ -44,9 +49,11 @@ class Country(models.Model):
     class Meta:
         verbose_name = _("Country")
         verbose_name_plural = _("Countries")
+        ordering = ("name",)
 
     def __unicode__(self):
         return self.name
+
 
 class Rating(models.Model):
    
@@ -69,4 +76,3 @@ class Rating(models.Model):
 
     def __unicode__(self):
         return self.value
-
