@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 class Airline(models.Model):
    
     name = models.CharField(_("Name"), max_length=100)
-    callsign = models.CharField(_("Call sign"), max_length=100, blank=True, 
+    callsign = models.CharField(_("Call sign"), max_length=200, blank=True, 
         null=True)
     country = models.ForeignKey("Country", related_name="airlines", null=True)
     iata_code = models.CharField(_("IATA Code"), max_length=3, blank=True, 
