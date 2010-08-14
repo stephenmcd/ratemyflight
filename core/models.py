@@ -1,3 +1,6 @@
+
+from datetime import datetime
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -60,7 +63,7 @@ class Rating(models.Model):
     name = models.CharField(_("Name"), max_length=100)
     avatar_url = models.URLField(_("Avatar URL"))
     value = models.FloatField(_("Value"), null=True)
-    time = models.DateTimeField("Date/Time", auto_now_add=True)
+    time = models.DateTimeField("Date/Time", default=datetime.now)
     flight = models.CharField(_("Flight number"), max_length=10,
         blank=True, null=True)
     airline = models.ForeignKey("Airline", related_name="ratings", 
