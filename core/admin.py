@@ -17,8 +17,13 @@ class AirportAdmin(admin.ModelAdmin):
     search_fields = ("name", "city", "country", "iata_code", "icao_code",)
 
 
+class RatingAdmin(admin.ModelAdmin):
+    
+    list_display = ("avatar_link", "name",)
+
+
 admin.site.register(Airline, AirlineAdmin)
 admin.site.register(Airport, AirportAdmin)
 admin.site.register(Country)
-admin.site.register(Rating)
+admin.site.register(Rating, RatingAdmin)
 

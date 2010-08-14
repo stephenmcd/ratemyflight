@@ -62,7 +62,7 @@ class Rating(models.Model):
    
     name = models.CharField(_("Name"), max_length=100)
     avatar_url = models.URLField(_("Avatar URL"))
-    value = models.FloatField(_("Value"), null=True)
+    value = models.FloatField(_("Rating"), null=True)
     time = models.DateTimeField("Date/Time", default=datetime.now)
     flight = models.CharField(_("Flight number"), max_length=10,
         blank=True, null=True)
@@ -82,4 +82,11 @@ class Rating(models.Model):
         verbose_name_plural = _("Ratings")
 
     def __unicode__(self):
-        return self.value
+        return str(self.value)
+
+    def avatar_link(self):
+        return "<img style='vertical-align:middle; margin-right:3px;' " \
+            "src='%s' />" % self.avatar_url
+    avatar_link.allow_tags = True
+    avatar_link.short_description = ""
+
