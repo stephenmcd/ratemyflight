@@ -80,7 +80,7 @@ class Rating(models.Model):
     class Meta:
         verbose_name = _("Rating")
         verbose_name_plural = _("Ratings")
-        ordering = ("-id")
+        ordering = ("-id",)
 
     def __unicode__(self):
         return str(self.value)

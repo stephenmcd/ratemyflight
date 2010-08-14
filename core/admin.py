@@ -19,7 +19,8 @@ class AirportAdmin(admin.ModelAdmin):
 
 class RatingAdmin(admin.ModelAdmin):
     
-    list_display = ("avatar_link", "name",)
+    list_display = ("avatar_link", "name", "value", )
+    list_display_links = ("name",)
 
 
 admin.site.register(Airline, AirlineAdmin)
