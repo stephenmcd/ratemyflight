@@ -49,12 +49,26 @@ div#map_holder {
     text-align: center;
     -moz-box-shadow: 10px 10px 10px #231f20;
     margin-bottom: 20px;
+    position: relative;
 }
 
 div#map_canvas {
     width: 1000px;
     height: 500px;
 }
+
+div#map_data {
+    width: 992px;
+    padding: 4px;
+    height: 20px;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    background: rgba(64, 64, 64, 0.5);
+    text-align: right;
+    color: #fff;
+}
+
 
 div#form_rater {
     display: none;
