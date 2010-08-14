@@ -69,6 +69,7 @@ class Rating(models.Model):
         related_name="airports_from", blank=True, null=True)
     airport_to = models.ForeignKey("Airport", verbose_name="Airport to",
         related_name="airports_to", blank=True, null=True)
+    comment = models.TextField(_("Comment"), blank=True, null=True)
 
     class Meta:
         verbose_name = _("Rating")
