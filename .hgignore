@@ -4,5 +4,6 @@ syntax: glob
 *.db
 build/*
 dist/*
+local_settings.py
 ratemyflight.egg-info/*
 
