@@ -70,6 +70,9 @@ class Rating(models.Model):
     airport_to = models.ForeignKey("Airport", verbose_name="Airport to",
         related_name="airports_to", blank=True, null=True)
     comment = models.TextField(_("Comment"), blank=True, null=True)
+    tweet_id = models.IntegerField("Tweet ID", blank=True, null=True)
+    tweet_text = models.CharField("Tweet text", max_length=140, blank=True, 
+        null=True)
 
     class Meta:
         verbose_name = _("Rating")
