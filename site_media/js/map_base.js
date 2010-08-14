@@ -1,11 +1,35 @@
 /** map initialisation JS file **/
 
 var initialLoc;
-var browserSupportFlag = new Boolean();      
+var browserSupportFlag = new Boolean();   
+var EventID = false;  // used as a flag for the boundary changes   
 
 function initialize() {
     // this function initialises the map to the starting position and zoom
     // to the div in the page. 
+
+    // these are the inline functions
+    
+    function noGeoHandler() {
+      // this function deals with if the user either does't have or
+      // doesn't allow the geolocation to fire.
+      // no geolocation data so just go world view
+      
+      browserSupportFlag = false;
+      var worldView = new google.maps.LatLng(0,150);
+      map.setZoom(2);
+      map.setCenter(worldView); 
+    }
+    
+    function boundaryChange() {
+        // this function deals with a boundary change and will do things based
+        // on that event
+       
+        console.log("boundary_change");   
+    }
+
+
+
 
     var mapOptions = {
         zoom: 4,
@@ -38,16 +62,19 @@ function initialize() {
 
     }
 
-    function noGeoHandler() {
-      // this function deals with if the user either does't have or
-      // doesn't allow the geolocation to fire.
-      // no geolocation data so just go world view
-      
-      browserSupportFlag = false;
-      var worldView = new google.maps.LatLng(0,150);
-      map.setZoom(2);
-      map.setCenter(worldView); 
-    }
+
+    // now we set up event handlers to deal with the changes
+    google.maps.event.addListener(map, 'bounds_changed', 
+      function() {
+        if (EventID) {
+          clearTimeout(EventID);
+          console.log("cleared");
+        } 
+        EventID = setTimeout(boundaryChange, 1000);
+      }        
+    );
+
+
 
 }
     

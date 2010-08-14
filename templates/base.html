@@ -12,8 +12,15 @@
 
     <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.js"></script>
     <script type="text/javascript" src="{{ MEDIA_URL }}js/map_base.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/layout.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-1.8.4.custom.min.js"></script>
+    
     <script type="text/javascript">
-        window.onload = loadGMapScript;
+        //window.onload = loadGMapScript;
+        $(window).load(function() {
+            loadGMapScript();
+            doLayout();
+        });
     </script>
 
     {% block extra_head %}{% endblock %}

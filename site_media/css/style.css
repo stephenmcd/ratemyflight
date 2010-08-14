@@ -39,21 +39,23 @@ div#map_canvas {
 }
 
 div#form_rater {
+    display: none;
     width: 500px;
     height: 30px;
     background: #231f20;
     color: #888;
     position: absolute;
     z-index: 3;
+    /**-moz-transform-origin: 0px 0px;
+    -webkit-transform-origin: 0px 0px;
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
+    -o-transform: rotate(90deg);**/
 
 }
 
 div#form_rater h2 {
     text-align: center;
-    
 }
 
 /**div#form_rater {
