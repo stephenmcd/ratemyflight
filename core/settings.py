@@ -1,0 +1,3 @@
+
+
+MAX_AIRPORTS = 100
