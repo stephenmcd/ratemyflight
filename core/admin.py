@@ -1,4 +1,7 @@
+
 from django.contrib import admin
+from django.utils.translation import ugettext_lazy as _
+
 from core.models import Airline, Airport, Country, Rating
 
 
@@ -22,6 +25,13 @@ class RatingAdmin(admin.ModelAdmin):
     list_display = ("avatar_link", "name", "flight", "airline", 
         "airport_from", "airport_to", "value", "time",)
     list_display_links = ("name",)
+    fieldsets = (
+        (None, {"fields": (("name", "value", "avatar_url"),)}),
+        (_("Flight info"), {"fields": 
+            (("flight", "airline"), ("airport_from", "airport_to"))},),
+        (_("Twitter info"), {"fields": (("tweet_id", "tweet_text",),),
+            "classes": ("collapse",)},),
+    )
 
 admin.site.register(Airline, AirlineAdmin)
 admin.site.register(Airport, AirportAdmin)
