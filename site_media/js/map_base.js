@@ -25,10 +25,28 @@ function initialize() {
         // this function deals with a boundary change and will do things based
         // on that event
        
-        console.log("boundary_change");   
+        //console.log("boundary_change");       
+       // update the data area with the boundary details:
+       var bounds = map.getBounds();
+       var sw = bounds.getSouthWest();
+       var ne = bounds.getNorthEast()
+       var data = "SW: (" + sw.lat() + ", " + 
+       sw.lng() + ") NE: (" + ne.lat() + 
+       ", " + ne.lng() + ")";
+       
+       // hit the ajax call for the airports and we'll retrieve them:
+       var apiurl = '/api/airport/list/' + sw.lat() + '/' + sw.lng() + 
+                                          '/' + ne.lat() + '/' + ne.lng();
+      $("#map_data").text(apiurl);
+
+       
+   
     }
 
-
+    function DisplayAirports() {
+      // this function plots the airports on the map.
+            $("#map_data").text("displayed airports");
+    }
 
 
     var mapOptions = {
