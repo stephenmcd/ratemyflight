@@ -84,6 +84,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
+    "%s.core" % project_dir,
 )
 
 # Optional apps.
@@ -94,6 +95,7 @@ OPTIONAL_APPS = (
 )
 
 import sys
+sys.path.append(os.path.join(project_path, ".."))
 if not (len(sys.argv) > 1 and sys.argv[1] == "test"):
     for app in OPTIONAL_APPS:
         try:
