@@ -88,7 +88,25 @@ function initialize() {
     function DisplayFlights(data) {
       // this function plots the flights on the map
       
-      // 
+      // this is a demo to get it working for the Mel -> BNE flight.
+      
+      var flightCoords = [
+        // mel then syd
+        new google.maps.LatLng(-37.67333333333333, 144.84333333333333),
+        new google.maps.LatLng(33.942499999999995, -118.40805555555556),
+      ];
+      
+      var flightPath = new google.maps.Polyline({
+        path: flightCoords,
+        geodesic: true,
+        strokeColor: "#FF0000",
+        strokeOpacity: 1.0,
+        strokeWeight: 2
+      });
+
+      flightPath.setMap(map);
+
+
       
       
       
