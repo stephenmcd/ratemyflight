@@ -130,8 +130,7 @@ function initialize() {
             map: map,
             anchor: 4,
             flat: true,
-            content: '<div style="width: 150px; z-index: 10;" class="info-marker"><div>This is an image</div>' +
-                    '<div>@ajfisher Mel - LAX. 8*</div></div>'
+            content: GetHTMLForFlightTip(item)
           
           });
                   
