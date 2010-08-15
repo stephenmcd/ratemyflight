@@ -121,7 +121,7 @@ function initialize() {
       var marker = new google.maps.Marker({
                   position: midpoint.LatLng, 
                   map: map,
-                  title:"midpoint"
+                  icon: planeimage
               }); 
      
     }
@@ -213,6 +213,7 @@ function initialize() {
     // THIS IS WHERE WE START THE ACTUAL INIT OF THE MAP ETC
 
     var airportimage = "/site_media/img/airport.png";
+    var planeimage = "/site_media/img/plane.png";
 
     var mapOptions = {
         zoom: 4,
