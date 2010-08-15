@@ -36,6 +36,8 @@ alternatives may result in issues due to limited amount of testing over the
 
   * `Python 2.5`_
   * `Django 1.2`_
+  * `nginx`_
+  * `gunicorn`_
   * `Ubuntu`_
   * `Google Chrome`_ - Firefox showed various issues with Google maps. Internet Explorer surely won't render some elements.
   * `MySQL`_ - aftering installing fixtures, the column ``ratemyflight_airline.name`` requires its collation to be set to unicode.
@@ -49,6 +51,8 @@ alternatives may result in issues due to limited amount of testing over the
 .. _`distribute`: http://pypi.python.org/pypi/distribute
 .. _`Python 2.5`: http://python.org
 .. _`Django 1.2`: http://djangoproject.com
+.. _`nginx`: http://nginx.net
+.. _`gunicorn`: http://gunicorn.org
 .. _`Ubuntu`: http://ubuntu.com
 .. _`Google Chrome`: http://www.google.com/chrome/
 .. _`MySQL`: http://mysql.com
