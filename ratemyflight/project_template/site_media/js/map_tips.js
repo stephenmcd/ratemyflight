@@ -18,7 +18,7 @@ function GetHTMLForFlightTip(item) {
         '        <h4>' + item.name + '</h4>' +
         '        <p class="codes">' + from + ' -&gt; ' + dest + '</p>' + 
         '        <p class="rating">' + item.value + '</p>' +
-        '        <p class="comment">fdhjfsk fdksljfhd dslkfhd fdfdhs fdfks ' + item.comment + '</p>' +
+        '        <p class="comment">' + item.comment + '</p>' +
         '    </div>' +
         '</div>';
 
