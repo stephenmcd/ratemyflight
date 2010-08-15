@@ -4,6 +4,8 @@ from datetime import datetime
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from ratemyflight.managers import AirportManager
+
     
 class Airline(models.Model):
    
@@ -35,6 +37,8 @@ class Airport(models.Model):
     icao_code = models.CharField(_("ICAO Code"), max_length=4, unique=True)
     latitude = models.FloatField(_("Latitude"))
     longitude = models.FloatField(_("Longitude"))
+    
+    objects = AirportManager()
 
     class Meta:
         verbose_name = _("Airport")

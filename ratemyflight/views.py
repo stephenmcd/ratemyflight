@@ -22,42 +22,13 @@ def rating(request, template="rating.html"):
     context = {"form": form}
     return render_to_response(template, context, RequestContext(request))
 
-def boundary_filter(south, west, north, east):
-    """
-    Return the given boundary as a Q object suitable for querysets.
-    """
-    return Q(latitude__gt=south, longitude__gt=west, 
-        latitude__lt=north, longitude__lt=east)
-
-def boundary(south, west, north, east):
-    """
-    Return the given boundary as a Q object, combining multiple checks if the 
-    boundary overlaps a hemisphere line.
-    """
-    south = float(south)
-    west = float(west)
-    north = float(north)
-    east = float(east)
-    if west * east < 0:
-        # Boundary overlaps a hemisphere line, look up either side of it.
-        if (180 - west) < west:
-            # Closest to International Date Line.
-            lookup = (boundary_filter(south, west, north, 180) | 
-                boundary_filter(south, -180, north, east))
-        else:
-            # Closest to Prime Meridian.
-            lookup = (boundary_filter(south, west, north, 0) | 
-                boundary_filter(south, 0, north, east))
-    else:
-        lookup = boundary_filter(south, west, north, east)
-    return lookup
 
 def airports_for_boundary(request, south, west, north, east):
     """
     Return a JSON formatted list of airports in the given boundary.
     """
     try:
-        airports = Airport.objects.filter(boundary(south, west, north, east))
+        airports = Airport.objects.for_boundary(south, west, north, east)
     except ValueError:
         return HttpResponse("[]", mimetype="application/json")
     json = serializers.serialize("json", airports[:MAX_AIRPORTS])
@@ -68,7 +39,7 @@ def flights_for_boundary(request, south, west, north, east):
     Returns the flights within the bounding box supplied.
     """
     try:
-        airports = Airport.objects.filter(boundary(south, west, north, east))
+        airports = Airport.objects.for_boundary(south, west, north, east)
     except ValueError:
         return HttpResponse("[]", mimetype="application/json")
     flights = Rating.objects.filter(Q(airport_from__in=airports) | 
