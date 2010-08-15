@@ -33,7 +33,6 @@ with open(os.path.join(scripts_path, "data", "airports.txt"), "r") as f:
         if parts[12] in ("W", "U"):
             lon *= -1
         airport.longitude = lon
-        airport.save()
-
-
+        if airport.name:
+            airport.save()
 
