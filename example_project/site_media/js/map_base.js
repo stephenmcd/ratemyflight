@@ -270,6 +270,9 @@ function initialize() {
       }        
     );
     
+    // add in our additional library for the rich markers
+    loadRichMarkerScript();
+    
 
 }
     
@@ -278,7 +281,15 @@ function loadGMapScript() {
     script.type = "text/javascript";
     script.src = "http://maps.google.com/maps/api/js?sensor=false&callback=initialize";
     document.body.appendChild(script);
+    
 }
 
+function loadRichMarkerScript() {
+    // add the other
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "/site_media/js/richmarker-compiled.js";
+    document.body.appendChild(script);
+}
 
     
