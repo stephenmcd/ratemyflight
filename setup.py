@@ -11,12 +11,17 @@ setup(
     author="Stephen McDonald",
     author_email="stephen.mc@gmail.com",
     description="",
-    #long_description=open("README.rst").read(),
+    long_description=open("README.rst").read(),
     license="BSD",
     url="http://ratemyflight.org/",
     zip_safe=False,
     include_package_data=True,
     packages=find_packages(),
+
+    entry_points="""
+        [console_scripts]
+        ratemyflight=ratemyflight.scripts.create_project:create_project
+    """,
 
     classifiers=[
         "Development Status :: 4 - Beta",
