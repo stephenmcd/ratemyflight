@@ -51,5 +51,5 @@ alternatives may result in issues due to limited amount of testing over the
 .. _`Django 1.2`: http://djangoproject.com
 .. _`Ubuntu`: http://ubuntu.com
 .. _`Google Chrome`_: http://www.google.com/chrome/
-.. _`MySQL`_ - http://mysql.com
+.. _`MySQL`: http://mysql.com
 
