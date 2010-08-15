@@ -6,6 +6,7 @@ var EventID = false;  // used as a flag for the boundary changes
 
 var airportList = new Array();
 var airportsLoaded = {};
+var flightsLoaded = {};
 var flightList = new Array();
 var flightPath = null;
 
@@ -95,6 +96,54 @@ function initialize() {
     }
     
     function DisplayFlights(data) {
+      // this function displays the flights on the map.
+      
+      for (i=0; i< data.length; i++){
+        item = data[i];
+        
+        if (! flightsLoaded[item.id]) {
+        
+          dept = new google.maps.LatLng(item.airport_from.latitude, item.airport_from.longitude);
+          arr = new google.maps.LatLng(item.airport_to.latitude, item.airport_to.longitude);
+          flightCoords = [dept, arr];
+          
+          flightPath = new google.maps.Polyline({
+            path: flightCoords,
+            geodesic: true,
+            strokeColor: "#b10000",
+            strokeOpacity: 0.2,
+            strokeWeight: 3
+          });
+
+          flightPath.setMap(map);
+          
+          midpoint = dept.midpointLocation(arr, distance(dept, arr) * Math.random());
+          
+          var marker = new google.maps.Marker({
+                      position: midpoint.LatLng, 
+                      map: map,
+                      icon: planeimage
+                  }); 
+                  
+          var infoMarker = new RichMarker({
+            position: midpoint.LatLng,
+            map: map,
+            anchor: 4,
+            flat: true,
+            content: '<div style="width: 150px; z-index: 10;" class="info-marker"><div>This is an image</div>' +
+                    '<div>@ajfisher Mel - LAX. 8*</div></div>'
+          
+          });
+                  
+          flightsLoaded[item.id] = true;
+          
+          
+        }
+      }
+    }
+    
+    
+    function DisplayFlightsOld(data) {
       // this function plots the flights on the map
       
       // this is a demo to get it working for the Mel -> BNE flight.
