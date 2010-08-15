@@ -115,9 +115,9 @@ function initialize() {
 
       flightPath.setMap(map);
 
-      //alert(distance(mel, lax) / 2);
       
       midpoint = mel.midpointLocation(lax, distance(mel, lax) * 0.80);
+      
       var marker = new google.maps.Marker({
                   position: midpoint.LatLng, 
                   map: map,
@@ -174,6 +174,7 @@ function initialize() {
 
         midpointObject  = {};
         midpointObject.LatLng = new google.maps.LatLng(toDeg(lat2), toDeg(lon2));
+        midpointObject.bearing = toDeg(brng);
 
        return midpointObject;
     }
@@ -212,8 +213,16 @@ function initialize() {
 
     // THIS IS WHERE WE START THE ACTUAL INIT OF THE MAP ETC
 
-    var airportimage = "/site_media/img/airport.png";
-    var planeimage = "/site_media/img/plane.png";
+    var airportimage = new google.maps.MarkerImage(
+      "/site_media/img/airport.png",
+      new google.maps.Size(24, 24),
+      new google.maps.Point(0,0),
+      new google.maps.Point(12,12) );
+    var planeimage = new google.maps.MarkerImage(
+      "/site_media/img/plane.png",
+      new google.maps.Size(20, 21),
+      new google.maps.Point(0, 0),
+      new google.maps.Point(10, 11) );
 
     var mapOptions = {
         zoom: 4,
