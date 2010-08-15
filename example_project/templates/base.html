@@ -11,25 +11,13 @@
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/reset.css" >
 	<link rel="stylesheet" href="{{ MEDIA_URL }}css/style.css" >
 
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/map_base.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/layout.js"></script>
-    <!--script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-1.8.4.custom.min.js"></script -->
-    
-    <script type="text/javascript">
-        //window.onload = loadGMapScript;
-        $(window).load(function() {
-            loadGMapScript();
-            doLayout();
-        });
-    </script>
-
     {% block extra_head %}{% endblock %}
     {% include "includes/ga_code.html" %}
+
 </head>
 <body>
-    {% block main %}{% endblock %}
 	<div id="container">
+
 		<div id="header">
 			<h1 class="logo">Rate My Flight</h1>
 			
@@ -51,28 +39,19 @@
 				</p>
 			</div>
 		</div>
-	
-		<div id="form_rater">
-			<h2>Rate a flight</h2>
-		</div>
-		<div id="map_holder">
-			<div id="map_canvas"></div>
-			<div id="map_data">Here is some map data</div>
-		</div>
-	
-		<!--<div id="search_bar">
-			<h2>Change the view</h2>
-		</div>-->
-	
-		<div id="tops">
+
+		{% block main %}{% endblock %}
 		
+		<div id="tops">
 		</div>
+
 		<div id="footer">
 			<p>This site powered by <a href="http://www.djangoproject.com">Django</a>, 
 			produced by <a href="http://djangodash.com/teams/citrus/">Team Citrus</a> as part of
 			<a href="http://djangodash.com/">Django Dash 2010</a>. 
 			Follow us on twitter <a href="http://twitter.com/ratemyflight">@ratemyflight</a></p>
 		</div>
+
 	</div>
 </body>
 
