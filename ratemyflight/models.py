@@ -60,7 +60,7 @@ class Country(models.Model):
 
 class Rating(models.Model):
    
-    name = models.CharField(_("Name"), max_length=100)
+    name = models.CharField(_("Your name"), max_length=100)
     avatar_url = models.URLField(_("Avatar URL"))
     value = models.FloatField(_("Rating"), null=True)
     time = models.DateTimeField("Date/Time", default=datetime.now)

@@ -1,9 +1,25 @@
-from django.core import serializers
-from django.http import HttpResponse
 
+from django.core import serializers
+from django.core.urlresolvers import reverse
+from django.http import HttpResponse
+from django.shortcuts import redirect, render_to_response
+from django.template import RequestContext
+
+from ratemyflight.forms import RatingForm
 from ratemyflight.models import Airport
 from ratemyflight.settings import MAX_AIRPORTS
 
+
+def rating(request, template="rating.html"):
+    """
+    Rating form.
+    """
+    form = RatingForm(request.POST or None)
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        return redirect(reverse("rating"))
+    context = {"form": form}
+    return render_to_response(template, context, RequestContext(request))
 
 def airports_for_boundary(request, south, west, north, east):
     """
