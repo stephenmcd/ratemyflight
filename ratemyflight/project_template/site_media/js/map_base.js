@@ -136,6 +136,12 @@ function initialize() {
             content: GetHTMLForFlightTip(item)
           });
          
+         // add a listener to bring the item forward
+          google.maps.event.addListener(infoMarker, 'click', function() {
+            amount = this.getZIndex();
+            this.setZIndex(amount+50);
+          });
+         
                   
           flightsLoaded[item.id] = true;
           

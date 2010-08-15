@@ -187,7 +187,7 @@ RichMarker.prototype['getZIndex'] = RichMarker.prototype.getZIndex;
  */
 RichMarker.prototype.zIndex_changed = function() {
   if (this.getZIndex() && this.ready_) {
-    this.markerWrapper_.style.zIndex = this.getZindex();
+    this.markerWrapper_.style.zIndex = this.getZIndex();
   }
 };
 RichMarker.prototype['zIndex_changed'] = RichMarker.prototype.zIndex_changed;
