@@ -7,8 +7,8 @@ import os
 import sys
 project_path = os.path.dirname(os.path.abspath(__file__))
 project_dir = project_path.split(os.sep)[-1]
-if project_dir == "example_project":
-    dev_path = os.path.abspath(os.path.join(project_path, ".."))
+if project_dir == "project_template":
+    dev_path = os.path.abspath(os.path.join(project_path, "..", ".."))
     if dev_path not in sys.path:
         sys.path.insert(0, dev_path)
     import ratemyflight
