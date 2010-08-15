@@ -50,6 +50,6 @@ alternatives may result in issues due to limited amount of testing over the
 .. _`Python 2.5`: http://python.org
 .. _`Django 1.2`: http://djangoproject.com
 .. _`Ubuntu`: http://ubuntu.com
-.. _`Google Chrome`_: http://www.google.com/chrome/
+.. _`Google Chrome`: http://www.google.com/chrome/
 .. _`MySQL`: http://mysql.com
 
