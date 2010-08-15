@@ -26,7 +26,7 @@ body { width: 100%; background: #e4fafe url("../img/bg.jpg") repeat-x 0 0; font-
 #footer { margin: 10px auto; text-align: center; }
 #footer > p { font-size: 10px; color: #231f20; }
 .cl { clear: both; }
-
+#form_rater { display: none;}
 form.rate li { list-style: none; }
 form.rate label { width: 50px; }
 form.rate table { margin: 10px 0 0 30px; }
@@ -38,3 +38,27 @@ form.rate select { height: 25px; width: 135px; }
 form.rate textarea { height: 60px; }
 form.rate input[type="submit"] { height: 40px; margin: 10px 0 0 25px; font-size: 18px; color:#fff; background: #212121; cursor: pointer; }
 form.rate input[type="submit"]:hover { background: #65cce7; color: #212121; }
+
+
+div.flight-info {
+    width: 190px;
+    background: #fff;
+    border: 1px solid #000;
+    height: 60px;
+    z-index: 20;
+}
+
+div.flight-info div.avatar {
+    float: left;
+    width: 48px;
+    padding-left: 2px;
+    padding-top: 2px;
+}
+div.flight-info div.flight {
+    width: 136px;
+    float: right;
+    background: #fff;
+    text-align: left;
+    padding: 2px;
+}
+
