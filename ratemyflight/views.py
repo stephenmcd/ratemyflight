@@ -12,9 +12,9 @@ from ratemyflight.models import Airport, Rating
 from ratemyflight.settings import MAX_AIRPORTS, MAX_FLIGHTS
 
 
-def rating(request, template="rating.html"):
+def home(request, template="index.html"):
     """
-    Rating form.
+    Homepage view - handle rating form.
     """
     form = RatingForm(request.POST or None)
     if request.method == "POST" and form.is_valid():
