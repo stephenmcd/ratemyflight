@@ -41,8 +41,8 @@ format::
 
     flight_number airport_from airport_to rating comment hashtag
 
-For example if I flew British Airways (BA) flight 227 from Sydney (SYD) to 
-Los Angeles (LAX) and gave it a rating of 8 I'd tweet::
+For example if you flew British Airways (BA) flight 227 from Sydney (SYD) to 
+Los Angeles (LAX) and gave it a rating of 8 you'd tweet::
 
     BA227 SYD LAX 8/10 I really enjoyed this flight! #ratemyflight
 
