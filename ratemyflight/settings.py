@@ -4,7 +4,7 @@
 MAX_AIRPORTS = 100 
 
 # Maximum flights to return as JSON.
-MAX_FLIGHTS = 100 
+MAX_FLIGHTS = 10 
 
 # Pixel size of gravatar icons.
 GRAVATAR_SIZE = 32 
