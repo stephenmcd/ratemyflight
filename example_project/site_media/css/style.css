@@ -41,12 +41,24 @@ form.rate input[type="submit"]:hover { background: #65cce7; color: #212121; }
 
 
 div.flight-info {
-    width: 100px;
+    width: 190px;
     background: #fff;
+    border: 1px solid #000;
+    height: 60px;
+    z-index: 20;
 }
 
 div.flight-info div.avatar {
     float: left;
     width: 48px;
+    padding-left: 2px;
+    padding-top: 2px;
+}
+div.flight-info div.flight {
+    width: 136px;
+    float: right;
+    background: #fff;
+    text-align: left;
+    padding: 2px;
 }
 
