@@ -120,7 +120,7 @@ function initialize() {
           
           midpoint = dept.midpointLocation(arr, distance(dept, arr) * Math.random());
           
-          var marker = new google.maps.Marker({
+          var midpointmarker = new google.maps.Marker({
                       position: midpoint.LatLng, 
                       map: map,
                       icon: planeimage,
@@ -142,8 +142,15 @@ function initialize() {
             this.setZIndex(amount+50);
           });
          
-                  
-          flightsLoaded[item.id] = true;
+          
+          // sort out the object storage
+          flightinfo = {};
+          flightinfo.midpointmarker = midpointmarker;
+          flightinfo.infomarker = infoMarker;
+          flightinfo.flightpath = flightPath;
+          
+          flightsLoaded[item.id] = flightinfo;
+          
           
           
         }
@@ -174,7 +181,7 @@ function initialize() {
     google.maps.LatLng.prototype.midpointLocation = function(point, distance) {   
     // gets a midpoint location between two points. Actually defined by the 
     // distance you pass in as to how fr between points you go.
-       var lat1 = toRad(this.lat());
+       var lat1 = toRad(this.lat());          
        var lon1 = toRad(this.lng());
        var lat2 = toRad(point.lat());
        var lon2 = toRad(point.lng());         
@@ -227,7 +234,14 @@ function initialize() {
         }
       }
       
+      for (k in flightsLoaded) {
+        // remove all flights each time.
+        flightsLoaded[k].midpointmarker.setMap(null);
+        flightsLoaded[k].infomarker.setMap(null);
+        flightsLoaded[k].flightpath.setMap(null);
       
+        delete flightsLoaded[k];
+      }      
       /**allist=0;
        for (k in airportsLoaded){
         allist++;
