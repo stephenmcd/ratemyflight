@@ -22,6 +22,7 @@ function toDeg(radians) {
 
 
 
+
 function initialize() {
     // this function initialises the map to the starting position and zoom
     // to the div in the page. 
@@ -116,13 +117,15 @@ function initialize() {
       flightPath.setMap(map);
 
       
-      midpoint = mel.midpointLocation(lax, distance(mel, lax) * 0.80);
+      midpoint = mel.midpointLocation(lax, distance(mel, lax) * Math.random());
       
       var marker = new google.maps.Marker({
                   position: midpoint.LatLng, 
                   map: map,
                   icon: planeimage
               }); 
+              
+
      
     }
 
@@ -266,8 +269,7 @@ function initialize() {
         EventID = setTimeout(boundaryChange, 1000);
       }        
     );
-
-
+    
 
 }
     
@@ -277,4 +279,6 @@ function loadGMapScript() {
     script.src = "http://maps.google.com/maps/api/js?sensor=false&callback=initialize";
     document.body.appendChild(script);
 }
+
+
     
