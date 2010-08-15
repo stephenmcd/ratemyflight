@@ -76,19 +76,22 @@ function initialize() {
        
        }
        
-       allist=0;
+       /**allist=0;
        for (k in airportsLoaded){
         allist++;
-      }
+      }**/
         
        
-       $("#map_data").text($("#map_data").text() + " // " + allist + " airports //") ;
+       //$("#map_data").text($("#map_data").text() + " // " + allist + " airports //") ;
     }
     
     function DisplayFlights(data) {
       // this function plots the flights on the map
       
       // 
+      
+      
+      
       
       $("#map_data").text($("#map_data").text() + " flights loaded") ;
     }
@@ -111,11 +114,11 @@ function initialize() {
       }
       
       
-      allist=0;
+      /**allist=0;
        for (k in airportsLoaded){
         allist++;
-      }
-      $("#map_data").text("Airports: " + allist + " // ");
+      }**/
+      //$("#map_data").text("Airports: " + allist + " // ");
     
     
     }
