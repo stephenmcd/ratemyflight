@@ -150,56 +150,9 @@ function initialize() {
       }
     }
     
-    
-    function DisplayFlightsOld(data) {
-      // this function plots the flights on the map
-      
-      // this is a demo to get it working for the Mel -> BNE flight.
-      
-      mel = new google.maps.LatLng(-37.67333333333333, 144.84333333333333);
-      lax = new google.maps.LatLng(33.942499999999995, -118.40805555555556);
-      
-      var flightCoords = [
-        // mel then syd
-        mel, lax
-      ];
-      
-      if (! flightPath) {
-      
-          flightPath = new google.maps.Polyline({
-            path: flightCoords,
-            geodesic: true,
-            strokeColor: "#b10000",
-            strokeOpacity: 0.2,
-            strokeWeight: 3
-          });
-
-          flightPath.setMap(map);
-
-          
-          midpoint = mel.midpointLocation(lax, distance(mel, lax) * Math.random());
-          
-          var marker = new google.maps.Marker({
-                      position: midpoint.LatLng, 
-                      map: map,
-                      icon: planeimage
-                  }); 
-                  
-          //alert("info");
-          var infoMarker = new RichMarker({
-            position: midpoint.LatLng,
-            map: map,
-            anchor: 4,
-            flat: true,
-            content: '<div style="width: 150px; z-index: 10;" class="info-marker"><div>This is an image</div>' +
-                    '<div>@ajfisher Mel - LAX. 8*</div></div>'
-          
-          });
-      }
-     
-    }
 
     function distance(point1, point2) {
+    // gets the distance between two points
           lat1 = point1.lat();
           lat2 = point2.lat();
           lon1 = point1.lng();
@@ -219,6 +172,8 @@ function initialize() {
 
 
     google.maps.LatLng.prototype.midpointLocation = function(point, distance) {   
+    // gets a midpoint location between two points. Actually defined by the 
+    // distance you pass in as to how fr between points you go.
        var lat1 = toRad(this.lat());
        var lon1 = toRad(this.lng());
        var lat2 = toRad(point.lat());
