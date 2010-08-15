@@ -42,9 +42,9 @@ format::
     flight_number airport_from airport_to rating comment hashtag
 
 For example if I flew British Airways (BA) flight 227 from Sydney (SYD) to 
-Los Angeles (LAX) and gave it a rating of 5 due to poor service I'd tweet::
+Los Angeles (LAX) and gave it a rating of 8 I'd tweet::
 
-    BA227 SYD LAX 5/10 service was awful! #ratemyflight
+    BA227 SYD LAX 8/10 I really enjoyed this flight! #ratemyflight
 
 API
 ===
