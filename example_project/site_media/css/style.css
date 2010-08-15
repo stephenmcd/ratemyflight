@@ -1,15 +1,17 @@
+html, body { height: 100%; }
+body { width: 100%; background: #e4fafe url("../img/bg.jpg") repeat-x 0 0; font-family: helvetica, arial, sans serif; font-size: 12px; position: relative; }
 
-body { width: 100%; position: relative; background: #66cbe7 url("../img/bg.gif") repeat-x 0 0; font-family: helvetica, arial, sans serif; font-size: 12px; }
-
-#container { width: 1000px; position: relative; margin: 0 auto; }
-div#header { margin: 0 auto; }
-#header h1.logo { display: block; width: 220px; height: 127px; margin: 15px 0; background: url("../img/ratemyflight.png") no-repeat 0 0; text-indent: -9999px; }
-div#message { background: #bbb; text-align: left; -moz-box-shadow: 3px 3px 6px #606060; -webkit-box-shadow: 3px 3px 6px #606060; padding: 15px; margin-bottom: 20px; border: 1px solid #231f20; }
-div#message h2 { margin: 0; font-size: 14px; margin-bottom: 10px; }
-div#message p { font-size: 11px; line-height: 14px; margin-bottom: 6px; }
-div#map_holder { position: relative; margin: 0 auto 20px; text-align: center; overflow: hidden; -moz-box-shadow: 3px 3px 6px #606060; border: 1px solid #231f20; background: #fff; }
-div#map_canvas { height: 500px; }
-div#map_data { width: 992px; padding: 4px; height: 20px; position: absolute; z-index: 3; top: 0; background: rgba(64, 64, 64, 0.5); text-align: right; color: #fff; }
+#wrapper { position: relative; width: 100%; min-height: 100%; margin: 0 auto -99px; background: url("../img/foot-cityscape.gif") repeat-x center bottom; }
+#foot, .push { height: 99px; clear: both; }
+#container { width: 960px; margin: 120px auto 0; background: #fff; -moz-box-shadow: 3px 3px 6px #606060; -webkit-box-shadow: 3px 3px 6px #606060; }
+#header { margin: 0 auto; height: 80px; position: relative; }
+#header h1.logo { position: absolute; top: -87px; left: 341px; display: block; width: 267px; height: 153px; margin: 0 auto; background: url("../img/ratemyflight.png") no-repeat 0 0; text-indent: -9999px; }
+#message { position: absolute; z-index: 30; width: 400px; top: -110px; right: 30px; background: rgba(221, 221, 221, 0.8); text-align: left; -moz-box-shadow: 3px 3px 6px #606060; -webkit-box-shadow: 3px 3px 6px #606060; padding: 15px; margin-bottom: 20px; border: 1px dashed #231f20; }
+#message h2 { margin: 0; font-size: 14px; margin-bottom: 10px; }
+#message p { font-size: 11px; line-height: 14px; margin-bottom: 6px; }
+#map_holder { position: relative; margin: 0 auto 20px; text-align: center; overflow: hidden; border: 1px solid #231f20; background: #fff; }
+#map_canvas { height: 500px; }
+#map_data { width: 950px; padding: 4px; height: 20px; position: absolute; z-index: 3; top: 0; background: rgba(64, 64, 64, 0.5); text-align: right; color: #fff; }
 #form_rater { width: 500px; height: 30px; background: #231f20; color: #888; position: absolute; z-index: 100; top: 0; left: 0;
 	-moz-transform-origin: 15px 15px;
     -webkit-transform-origin: 15px 15px;
@@ -17,7 +19,7 @@ div#map_data { width: 992px; padding: 4px; height: 20px; position: absolute; z-i
     -moz-transform: rotate(90deg);
     -o-transform: rotate(90deg);
 }
-div#form_rater h2 { text-align: center; }
+#form_rater h2 { text-align: center; }
 
 /**div#form_rater {
     width: 500px;
@@ -27,7 +29,7 @@ div#form_rater h2 { text-align: center; }
     position: absolute;
 }**/
 
-div#form_rater h2 { font-size: 14pt; margin: 0 auto; }
-div#footer { margin: 10px auto; text-align: center; }
-div#footer > p { font-size: 10px; color: #231f20; }
+#form_rater h2 { font-size: 14pt; margin: 0 auto; }
+#footer { margin: 10px auto; text-align: center; }
+#footer > p { font-size: 10px; color: #231f20; }
 .cl { clear: both; }
