@@ -32,7 +32,7 @@ Notes
 `Rate My Flight`_ has no specific dependencies but was developed and deployed 
 with the following software selected for its environment, and using 
 alternatives may result in issues due to limited amount of testing over the 
-48 hour competition period::
+48 hour competition period.
 
   * `Python 2.5`_
   * `Django 1.2`_
