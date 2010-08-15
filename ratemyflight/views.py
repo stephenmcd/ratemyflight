@@ -69,4 +69,65 @@ def airports_for_boundary(request, south, west, north, east):
     airports_alt = Airport.objects.filter(**lookup_alt)
     
     json = serializers.serialize("json", (airports | airports_alt)[:MAX_AIRPORTS])
-    return HttpResponse(json, mimetype="application/json")
+
+    if request:
+        return HttpResponse(json, mimetype="application/json")
+    else:
+        #used to display the data at command line
+        return json
+    
+def flights_for_boundary (request, south, west, north, east):
+    """
+    Returns the flights within the bounding box supplied.
+    """
+    
+    json = serializers.serialize("json", {})
+    
+    if request:
+        return HttpResponse(json, mimetype="application/json")
+    else:
+        return json
+    
+def flights_for_carrier (request, carrier_code):
+    """
+    Returns a list of flights for a given carrier
+    
+    Arguments:
+    carrier_code: 2 letter IATA carrier code
+    """
+    
+    json = serializers.serialize("json", {})
+    
+    if request:
+        return HttpResponse(json, mimetype="application/json")
+    else:
+        return json
+
+def flights_for_username (request, username):
+    """
+    Returns a list of flights for a given username
+    
+    Arguments:
+    username: the username that you are looking for.
+    """
+    
+    json = serializers.serialize("json", {})
+    if request:
+        return HttpResponse(json, mimetype="application/json")
+    else:
+        return json
+
+def recent_flights (request, num):
+    """
+    Returns num list of flights, sorted by recency. No bounding area
+    
+    Arguments:
+    num: the number you want to return
+    """
+    
+    json = serializers.serialize("json", {})
+    if request:
+        return HttpResponse(json, mimetype="application/json")
+    else:
+        return json
+
