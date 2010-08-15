@@ -7,6 +7,7 @@ var EventID = false;  // used as a flag for the boundary changes
 var airportList = new Array();
 var airportsLoaded = {};
 var flightList = new Array();
+var flightPath = null;
 
 
 function toRad (degrees) {
@@ -57,7 +58,7 @@ function initialize() {
         var flighturl = '/api/flight/list/' + sw.lat() + '/' + sw.lng() + 
                                           '/' + ne.lat() + '/' + ne.lng() + "/";
                                           
-        $("#map_data").text(airporturl);
+        $("#map_data").text(flighturl);
 
        $.getJSON(airporturl, null, DisplayAirports);
        $.getJSON(flighturl, null, DisplayFlights);
@@ -106,26 +107,38 @@ function initialize() {
         mel, lax
       ];
       
-      var flightPath = new google.maps.Polyline({
-        path: flightCoords,
-        geodesic: true,
-        strokeColor: "#b10000",
-        strokeOpacity: 0.2,
-        strokeWeight: 3
-      });
-
-      flightPath.setMap(map);
-
+      if (! flightPath) {
       
-      midpoint = mel.midpointLocation(lax, distance(mel, lax) * Math.random());
-      
-      var marker = new google.maps.Marker({
-                  position: midpoint.LatLng, 
-                  map: map,
-                  icon: planeimage
-              }); 
-              
+          flightPath = new google.maps.Polyline({
+            path: flightCoords,
+            geodesic: true,
+            strokeColor: "#b10000",
+            strokeOpacity: 0.2,
+            strokeWeight: 3
+          });
 
+          flightPath.setMap(map);
+
+          
+          midpoint = mel.midpointLocation(lax, distance(mel, lax) * Math.random());
+          
+          var marker = new google.maps.Marker({
+                      position: midpoint.LatLng, 
+                      map: map,
+                      icon: planeimage
+                  }); 
+                  
+          //alert("info");
+          var infoMarker = new RichMarker({
+            position: midpoint.LatLng,
+            map: map,
+            anchor: 4,
+            flat: true,
+            content: '<div style="width: 150px; z-index: 10;" class="info-marker"><div>This is an image</div>' +
+                    '<div>@ajfisher Mel - LAX. 8*</div></div>'
+          
+          });
+      }
      
     }
 
