@@ -1,19 +1,20 @@
+<!DOCTYPE html>
 <html>
-
 <head>
 
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" /> 
     <meta name="keywords" content="" /> 
     <meta name="description" content="" /> 
-    <title>Rate My Flight - global passenger created flight ratings</title>
+    <title>Rate My Flight - Global, passenger created flight ratings</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ MEDIA_U }}img/favicon.ico" />
-    <link rel="stylesheet" href="{{ MEDIA_URL }}css/style.css" >
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/reset.css" >
+	<link rel="stylesheet" href="{{ MEDIA_URL }}css/style.css" >
 
     <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.js"></script>
     <script type="text/javascript" src="{{ MEDIA_URL }}js/map_base.js"></script>
     <script type="text/javascript" src="{{ MEDIA_URL }}js/layout.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-1.8.4.custom.min.js"></script>
+    <!--script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-1.8.4.custom.min.js"></script -->
     
     <script type="text/javascript">
         //window.onload = loadGMapScript;
@@ -24,59 +25,55 @@
     </script>
 
     {% block extra_head %}{% endblock %}
-
-    
     {% include "includes/ga_code.html" %}
-
-
 </head>
-
 <body>
     {% block main %}{% endblock %}
-    <div id="header">
-        <h1>Rate My Flight</h1>
-        
-        <div id="message">
-            <h2>We need your flight data!</h2>
-            <p>Send a tweet to @ratemyflight or use the hashtag #ratemyflight
-            telling us how good or not your flight was out of 10. Send your
-            tweet like this:<p>
-            <p class="tweet">
-            {Flight Number eg: <strong>BA123</strong>} 
-            {3 letter airport code you left from eg: <strong>LHR</strong>} 
-            {3 letter airport code you went to eg: <strong>SYD</strong>} 
-            {your rating out of 10 eg: <strong>8/10</strong>} 
-            {#ratemyflight or @ratemyflight} {any comments you want
-            to appear next to your rating}
-            </p>
-            <p class="tweet">
-            EG: "<strong>BA123 LHR SYD 8/10</strong> #ratemyflight I really enjoyed this flight!"
-            </p>
-        </div>
-    </div>
-
-   <div id="form_rater">
-        <h2>Rate a flight</h2>
-    </div>
-    <div id="map_holder">
-        <div id="map_canvas"></div>
-        <div id="map_data">Here is some map data</div>
-    </div>
-
-<!--    <div id="search_bar">
-        <h2>Change the view</h2>
-    </div>-->
-
-    <div id="tops">
-    
-    </div>
-    <div id="footer">
-        <p>This site powered by <a href="http://www.djangoproject.com">Django</a>, 
-        produced by <a href="http://djangodash.com/teams/citrus/">Team Citrus</a> as part of
-        <a href="http://djangodash.com/">Django Dash 2010</a>. 
-        Follow us on twitter <a href="http://twitter.com/ratemyflight">@ratemyflight</a></p>
-    </div>
-    
+	<div id="container">
+		<div id="header">
+			<h1 class="logo">Rate My Flight</h1>
+			
+			<div id="message">
+				<h2>We need your flight data!</h2>
+				<p>Send a tweet to @ratemyflight or use the hashtag #ratemyflight
+				telling us how good or not your flight was out of 10. Send your
+				tweet like this:<p>
+				<p class="tweet">
+				{Flight Number eg: <strong>BA123</strong>} 
+				{3 letter airport code you left from eg: <strong>LHR</strong>} 
+				{3 letter airport code you went to eg: <strong>SYD</strong>} 
+				{your rating out of 10 eg: <strong>8/10</strong>} 
+				{#ratemyflight or @ratemyflight} {any comments you want
+				to appear next to your rating}
+				</p>
+				<p class="tweet">
+				EG: "<strong>BA123 LHR SYD 8/10</strong> #ratemyflight I really enjoyed this flight!"
+				</p>
+			</div>
+		</div>
+	
+		<div id="form_rater">
+			<h2>Rate a flight</h2>
+		</div>
+		<div id="map_holder">
+			<div id="map_canvas"></div>
+			<div id="map_data">Here is some map data</div>
+		</div>
+	
+		<!--<div id="search_bar">
+			<h2>Change the view</h2>
+		</div>-->
+	
+		<div id="tops">
+		
+		</div>
+		<div id="footer">
+			<p>This site powered by <a href="http://www.djangoproject.com">Django</a>, 
+			produced by <a href="http://djangodash.com/teams/citrus/">Team Citrus</a> as part of
+			<a href="http://djangodash.com/">Django Dash 2010</a>. 
+			Follow us on twitter <a href="http://twitter.com/ratemyflight">@ratemyflight</a></p>
+		</div>
+	</div>
 </body>
 
 </html>
