@@ -3,16 +3,18 @@ body { width: 100%; background: #e4fafe url("../img/bg.jpg") repeat-x 0 0; font-
 
 #wrapper { width: 100%; min-height: 100%; margin: 0 auto -99px; background: url("../img/foot-cityscape.gif") repeat-x center bottom; }
 #foot, .push { height: 99px; clear: both; }
-#container { width: 960px; margin: 120px auto 0; background: #fff; -moz-box-shadow: 3px 3px 6px #606060; -webkit-box-shadow: 3px 3px 6px #606060; }
+#container { width: 960px; margin: 120px auto 0; background: #fff; 
+    -moz-box-shadow: 0px 0px 30px #999; 
+    -webkit-box-shadow: 0px 0px 30px #999; }
 #header { margin: 0 auto; height: 80px; position: relative; }
 #header h1.logo { position: absolute; top: -87px; left: 341px; display: block; width: 267px; height: 153px; margin: 0 auto; background: url("../img/ratemyflight.png") no-repeat 0 0; text-indent: -9999px; }
 
 #message { position: absolute; z-index: 30; width: 400px; top: -110px; 
     right: 30px; background: #FFFCC3; text-align: left; 
-    -moz-box-shadow: 3px 3px 6px #606060; 
-    -webkit-box-shadow: 3px 3px 6px #606060; 
-    padding: 15px; margin-bottom: 20px; border: 1px solid #231f20; 
-    font-size: 16px;}
+    -moz-box-shadow: 0px 0px 20px #999; 
+    -webkit-box-shadow: 0px 0px 20px #999; 
+    padding: 15px; margin-bottom: 20px; border: 1px solid #999;
+    font-size: 14px;}
 
 #message .close {float:right; text-decoration:none; font-size:18px; 
     font-weight:bold; color:#000;}
