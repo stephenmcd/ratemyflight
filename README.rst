@@ -3,9 +3,10 @@ Overview
 ========
 
 `Rate My Flight`_ is a Django application that allows users to rate flights 
-they've taken. The application focuses around the homepage which displays a 
-map of the world and can be used to display data collected in various ways. 
-Ratings can be entered directly on the website or via twitter. 
+they've taken. The application consists of two parts: an API and the homepage 
+which implements it by displaying a map of the world which can be used to 
+display data collected in various ways. Ratings can be entered directly on 
+the website or via twitter. 
 
 `Rate My Flight`_ was created by `Andrew Fisher`_, `Josh de Blank`_ and 
 `Stephen McDonald`_ for the `Django Dash`_ competition 2010.
@@ -26,10 +27,24 @@ Once installed you can run the command ``ratemyflight project_name`` which
 will create a new Django project with the given ``project_name`` that has the 
 ``ratemyflight`` app installed.
 
+Consuming Tweets
+================
+
 In order to consume tweets it is necessary to create a cron job that runs 
 the command in your project's directory::
 
     $ python manage.py poll_twitter
+    
+Once the cron job is running it will consume tweets containing the hash tag 
+``#ratemyflight`` if found to contain rating information in the following 
+format::
+
+    flight_number airport_from airport_to rating comment hashtag
+
+For example if I flew British Airways (BA) flight 227 from Sydney (SYD) to 
+Los Angeles (LAX) and gave it a rating of 5 due to poor service I'd tweet:
+
+    BA227 SYD LAX 5/10 service was awful! #ratemyflight
 
 Notes
 =====
