@@ -26,6 +26,11 @@ Once installed you can run the command ``ratemyflight project_name`` which
 will create a new Django project with the given ``project_name`` that has the 
 ``ratemyflight`` app installed.
 
+In order to consume tweets it is necessary to create a cron job that runs 
+the command in your project's directory::
+
+    $ python manage.py poll_twitter
+
 Notes
 =====
 
