@@ -5,15 +5,16 @@ from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
+from django.utils import simplejson
 
 from ratemyflight.forms import RatingForm
 from ratemyflight.models import Airport, Rating
 from ratemyflight.settings import MAX_AIRPORTS, MAX_FLIGHTS
 
 
-def rating(request, template="rating.html"):
+def home(request, template="index.html"):
     """
-    Rating form.
+    Homepage view - handle rating form.
     """
     form = RatingForm(request.POST or None)
     if request.method == "POST" and form.is_valid():
@@ -21,7 +22,6 @@ def rating(request, template="rating.html"):
         return redirect(reverse("rating"))
     context = {"form": form}
     return render_to_response(template, context, RequestContext(request))
-
 
 def airports_for_boundary(request, south, west, north, east):
     """
@@ -36,7 +36,11 @@ def airports_for_boundary(request, south, west, north, east):
 
 def flights_for_boundary(request, south, west, north, east):
     """
-    Returns the flights within the bounding box supplied.
+    Returns the flights within the bounding box supplied. Since I'm not 
+    smart enough to get select_related to do a couple of JOINs onto the 
+    aiports, we have to graft the airports onto the flights. We also need to 
+    call values() on both the airports and flights since simplejson doesn't 
+    understand models.
     """
     try:
         airports = Airport.objects.for_boundary(south, west, north, east)
@@ -44,7 +48,17 @@ def flights_for_boundary(request, south, west, north, east):
         return HttpResponse("[]", mimetype="application/json")
     flights = Rating.objects.filter(Q(airport_from__in=airports) | 
         Q(airport_to__in=airports))
-    json = serializers.serialize("json", flights[:MAX_FLIGHTS])
+    flights = list(flights.values()[:MAX_FLIGHTS])
+    airport_ids = []
+    for flight in flights:
+        airport_ids.extend([flight["airport_from_id"], flight["airport_to_id"]])
+    airports = Airport.objects.filter(pk__in=airport_ids).values()
+    airports = dict([(a["id"], a) for a in airports])
+    for (i, flight) in enumerate(flights):
+        flights[i]["airport_from"] = airports[flight["airport_from_id"]]
+        flights[i]["airport_to"] = airports[flight["airport_to_id"]]
+        del flights[i]["time"] # Not serializeable.
+    json = simplejson.dumps(flights)
     return HttpResponse(json, mimetype="application/json")
     
 def flights_for_airline(request, iata_code):

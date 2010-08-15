@@ -18,6 +18,12 @@
 
 
 {% block main %}
+
+<form method="post">
+    <table>{{ form.as_table }}</table>
+    <input type="submit" />
+</form>
+
 <div id="map_holder">
 	<div id="map_canvas"></div>
 	<div id="map_data">Here is some map data</div>
