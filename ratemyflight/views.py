@@ -29,22 +29,17 @@ def boundary_filter(south, west, north, east):
     return Q(latitude__gt=south, longitude__gt=west, 
         latitude__lt=north, longitude__lt=east)
 
-def airports_for_boundary(request, south, west, north, east):
+def boundary(south, west, north, east):
     """
-    Return a JSON formatted list of airports in the given boundary.
+    Return the given boundary as a Q object, combining multiple checks if the 
+    boundary overlaps a hemisphere line.
     """
-
-    try:
-        south = float(south)
-        west = float(west)
-        north = float(north)
-        east = float(east)
-    except ValueError:
-        return HttpResponse("[]", mimetype="application/json")
-        
-    # Check if the boundary overlaps a hemisphere line and if so, we need to 
-    # look up either side of the hemisphere line.
+    south = float(south)
+    west = float(west)
+    north = float(north)
+    east = float(east)
     if west * east < 0:
+        # Boundary overlaps a hemisphere line, look up either side of it.
         if (180 - west) < west:
             # Closest to International Date Line.
             lookup = (boundary_filter(south, west, north, 180) | 
@@ -55,21 +50,31 @@ def airports_for_boundary(request, south, west, north, east):
                 boundary_filter(south, 0, north, east))
     else:
         lookup = boundary_filter(south, west, north, east)
-    airports = Airport.objects.filter(lookup)
+    return lookup
+
+def airports_for_boundary(request, south, west, north, east):
+    """
+    Return a JSON formatted list of airports in the given boundary.
+    """
+    try:
+        airports = Airport.objects.filter(boundary(south, west, north, east))
+    except ValueError:
+        return HttpResponse("[]", mimetype="application/json")
     json = serializers.serialize("json", airports[:MAX_AIRPORTS])
     return HttpResponse(json, mimetype="application/json")
-    
+
 def flights_for_boundary(request, south, west, north, east):
     """
     Returns the flights within the bounding box supplied.
     """
-    
-    json = serializers.serialize("json", {})
-    
-    if request:
-        return HttpResponse(json, mimetype="application/json")
-    else:
-        return json
+    try:
+        airports = Airport.objects.filter(boundary(south, west, north, east))
+    except ValueError:
+        return HttpResponse("[]", mimetype="application/json")
+    flights = Rating.objects.filter(Q(airport_from__in=airports) | 
+        Q(airport_to__in=airports))
+    json = serializers.serialize("json", flights[:MAX_AIRPORTS])
+    return HttpResponse(json, mimetype="application/json")
     
 def flights_for_airline(request, iata_code):
     """
