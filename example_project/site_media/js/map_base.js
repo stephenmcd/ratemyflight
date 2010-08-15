@@ -8,6 +8,20 @@ var airportList = new Array();
 var airportsLoaded = {};
 var flightList = new Array();
 
+
+function toRad (degrees) {
+  radians = (2 * Math.PI * degrees)/360;
+  return radians;
+
+}
+
+function toDeg(radians) {
+   degrees = 360 * radians/(2 * Math.PI);
+   return degrees;
+}
+
+
+
 function initialize() {
     // this function initialises the map to the starting position and zoom
     // to the div in the page. 
@@ -76,13 +90,6 @@ function initialize() {
        
        }
        
-       /**allist=0;
-       for (k in airportsLoaded){
-        allist++;
-      }**/
-        
-       
-       //$("#map_data").text($("#map_data").text() + " // " + allist + " airports //") ;
     }
     
     function DisplayFlights(data) {
@@ -90,29 +97,89 @@ function initialize() {
       
       // this is a demo to get it working for the Mel -> BNE flight.
       
+      mel = new google.maps.LatLng(-37.67333333333333, 144.84333333333333);
+      lax = new google.maps.LatLng(33.942499999999995, -118.40805555555556);
+      
       var flightCoords = [
         // mel then syd
-        new google.maps.LatLng(-37.67333333333333, 144.84333333333333),
-        new google.maps.LatLng(33.942499999999995, -118.40805555555556),
+        mel, lax
       ];
       
       var flightPath = new google.maps.Polyline({
         path: flightCoords,
         geodesic: true,
-        strokeColor: "#FF0000",
-        strokeOpacity: 1.0,
-        strokeWeight: 2
+        strokeColor: "#b10000",
+        strokeOpacity: 0.2,
+        strokeWeight: 3
       });
 
       flightPath.setMap(map);
 
-
+      //alert(distance(mel, lax) / 2);
       
-      
-      
-      
-      $("#map_data").text($("#map_data").text() + " flights loaded") ;
+      midpoint = mel.midpointLocation(lax, distance(mel, lax) * 0.80);
+      var marker = new google.maps.Marker({
+                  position: midpoint.LatLng, 
+                  map: map,
+                  title:"midpoint"
+              }); 
+     
     }
+
+    function distance(point1, point2) {
+          lat1 = point1.lat();
+          lat2 = point2.lat();
+          lon1 = point1.lng();
+          lon2 = point2.lng();
+	        var R = 6371000; // km (change this constant to get miles)
+	        var dLat = (lat2-lat1) * Math.PI / 180;
+	        var dLon = (lon2-lon1) * Math.PI / 180;
+	        var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+	            Math.cos(lat1 * Math.PI / 180 ) * Math.cos(lat2 * Math.PI / 180 ) *
+	            Math.sin(dLon/2) * Math.sin(dLon/2);
+	        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+	        var d = R * c;
+	        return d;
+    }
+
+
+
+
+    google.maps.LatLng.prototype.midpointLocation = function(point, distance) {   
+       var lat1 = toRad(this.lat());
+       var lon1 = toRad(this.lng());
+       var lat2 = toRad(point.lat());
+       var lon2 = toRad(point.lng());         
+       var dLon = (toRad(point.lng()) - toRad(this.lng()));
+
+       // Find the bearing from this point to the next.
+       var brng = Math.atan2(Math.sin(dLon) * Math.cos(lat2),
+                             Math.cos(lat1) * Math.sin(lat2) -
+                             Math.sin(lat1) * Math.cos(lat2) * 
+                             Math.cos(dLon));
+
+       var angDist = distance / 6371000;  // Earth's radius.
+
+       // Calculate the destination point, given the source and bearing.
+       lat2 = Math.asin(Math.sin(lat1) * Math.cos(angDist) + 
+                        Math.cos(lat1) * Math.sin(angDist) * 
+                        Math.cos(brng));
+
+       lon2 = lon1 + Math.atan2(Math.sin(brng) * Math.sin(angDist) *
+                                Math.cos(lat1), 
+                                Math.cos(angDist) - Math.sin(lat1) *
+                                Math.sin(lat2));
+
+       if (isNaN(lat2) || isNaN(lon2)) return null;
+
+        midpointObject  = {};
+        midpointObject.LatLng = new google.maps.LatLng(toDeg(lat2), toDeg(lon2));
+
+       return midpointObject;
+    }
+
+
+
 
     function CleanupBounding() {
       // this function removes all of the items that are outside of the bounding
