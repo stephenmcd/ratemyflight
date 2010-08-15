@@ -104,7 +104,7 @@ def flights_for_boundary(request, south, west, north, east):
     else:
         return json
     
-def flights_for_carrier(request, carrier_code):
+def flights_for_airline(request, iata_code):
     """
     Returns a list of flights for a given carrier.
     
