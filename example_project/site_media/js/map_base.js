@@ -53,10 +53,10 @@ function initialize() {
        var ne = bounds.getNorthEast()
        
        // hit the ajax call for the airports and we'll retrieve them:
-       var airporturl = '/api/airport/list/' + sw.lat() + '/' + sw.lng() + 
+       var airporturl = '/api/airport/boundary/' + sw.lat() + '/' + sw.lng() + 
                                           '/' + ne.lat() + '/' + ne.lng() + "/";
                                           
-        var flighturl = '/api/flight/list/' + sw.lat() + '/' + sw.lng() + 
+        var flighturl = '/api/flight/boundary/' + sw.lat() + '/' + sw.lng() + 
                                           '/' + ne.lat() + '/' + ne.lng() + "/";
                                           
         $("#map_data").text(flighturl);
