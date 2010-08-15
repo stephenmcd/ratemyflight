@@ -8,7 +8,7 @@ from django.template import RequestContext
 
 from ratemyflight.forms import RatingForm
 from ratemyflight.models import Airport, Rating
-from ratemyflight.settings import MAX_AIRPORTS
+from ratemyflight.settings import MAX_AIRPORTS, MAX_FLIGHTS
 
 
 def rating(request, template="rating.html"):
@@ -73,7 +73,7 @@ def flights_for_boundary(request, south, west, north, east):
         return HttpResponse("[]", mimetype="application/json")
     flights = Rating.objects.filter(Q(airport_from__in=airports) | 
         Q(airport_to__in=airports))
-    json = serializers.serialize("json", flights[:MAX_AIRPORTS])
+    json = serializers.serialize("json", flights[:MAX_FLIGHTS])
     return HttpResponse(json, mimetype="application/json")
     
 def flights_for_airline(request, iata_code):
