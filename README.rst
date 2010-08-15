@@ -24,7 +24,8 @@ or via `distribute`_::
     $ pip install ratemyflight
     
 Once installed you can run the command ``ratemyflight project_name`` which 
-will create a new Django project with the given ``project_name`` that has the 
+will create a new Djang.. _`MySQL`: http://mysql.com
+o project with the given ``project_name`` that has the 
 ``ratemyflight`` app installed.
 
 Consuming Tweets
@@ -42,7 +43,7 @@ format::
     flight_number airport_from airport_to rating comment hashtag
 
 For example if I flew British Airways (BA) flight 227 from Sydney (SYD) to 
-Los Angeles (LAX) and gave it a rating of 5 due to poor service I'd tweet:
+Los Angeles (LAX) and gave it a rating of 5 due to poor service I'd tweet::
 
     BA227 SYD LAX 5/10 service was awful! #ratemyflight
 
@@ -59,8 +60,8 @@ alternatives may result in issues due to limited amount of testing over the
   * `nginx`_
   * `gunicorn`_
   * `Ubuntu`_
-  * `Google Chrome`_ - Firefox showed various issues with Google maps. Internet Explorer surely won't render some elements.
-  * `MySQL`_ - aftering installing fixtures, the column ``ratemyflight_airline.name`` requires its collation to be set to unicode.
+  * `Google Chrome`_ - `Firefox`_ showed various issues with `Google Maps`_. `Internet Explorer`_ surely won't render some elements.
+  * `SQLite`_ - `MySQL`_ can be used but will raise an error while installing fixtures. In this case simply set the collation for the column ``ratemyflight_airline.name`` to unicode and re-run ``syncdb``.
 
 .. _`Rate My Flight`: http://ratemyflight.org
 .. _`Andrew Fisher`: http://ajfisher.me
@@ -75,5 +76,9 @@ alternatives may result in issues due to limited amount of testing over the
 .. _`gunicorn`: http://gunicorn.org
 .. _`Ubuntu`: http://ubuntu.com
 .. _`Google Chrome`: http://www.google.com/chrome/
+.. _`Firefox`: http://mozilla.com/firefox/
+.. _`Google Maps`: http://maps.google.com
+.. _`Internet Explorer`: http://www.microsoft.com/windows/internet-explorer
+.. _`SQLite`: http://www.sqlite.org
 .. _`MySQL`: http://mysql.com
 
