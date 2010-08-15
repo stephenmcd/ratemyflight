@@ -96,6 +96,19 @@ function initialize() {
        
     }
     
+    function GetPlaneImage(deg) {
+      // this function gets the plane image that is appropriate
+      var planeimage = new google.maps.MarkerImage(
+      "/site_media/img/plane.png",
+      new google.maps.Size(20, 21),
+      new google.maps.Point(0, 0),
+      new google.maps.Point(10, 11) );
+    
+    
+      return (planeimage);
+    }
+    
+    
     function DisplayFlights(data) {
       // this function displays the flights on the map.
       
@@ -123,9 +136,11 @@ function initialize() {
           var midpointmarker = new google.maps.Marker({
                       position: midpoint.LatLng, 
                       map: map,
-                      icon: planeimage,
-                      zIndex: 2
+                      icon: GetPlaneImage(),
+                      zIndex: 2,
                   }); 
+                  
+          $("div[title=mpm" + item.id + "]").css("border", "10 px solid red")
                   
           var infoMarker = new RichMarker({
             position: midpoint.LatLng,
@@ -260,11 +275,7 @@ function initialize() {
       new google.maps.Size(24, 24),
       new google.maps.Point(0,0),
       new google.maps.Point(12,12) );
-    var planeimage = new google.maps.MarkerImage(
-      "/site_media/img/plane.png",
-      new google.maps.Size(20, 21),
-      new google.maps.Point(0, 0),
-      new google.maps.Point(10, 11) );
+
 
     var mapOptions = {
         zoom: 4,
