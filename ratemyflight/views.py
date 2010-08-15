@@ -76,7 +76,7 @@ def airports_for_boundary(request, south, west, north, east):
         #used to display the data at command line
         return json
     
-def flights_for_boundary (request, south, west, north, east):
+def flights_for_boundary(request, south, west, north, east):
     """
     Returns the flights within the bounding box supplied.
     """
@@ -88,9 +88,9 @@ def flights_for_boundary (request, south, west, north, east):
     else:
         return json
     
-def flights_for_carrier (request, carrier_code):
+def flights_for_carrier(request, carrier_code):
     """
-    Returns a list of flights for a given carrier
+    Returns a list of flights for a given carrier.
     
     Arguments:
     carrier_code: 2 letter IATA carrier code
@@ -103,9 +103,9 @@ def flights_for_carrier (request, carrier_code):
     else:
         return json
 
-def flights_for_username (request, username):
+def flights_for_username(request, username):
     """
-    Returns a list of flights for a given username
+    Returns a list of flights for a given username.
     
     Arguments:
     username: the username that you are looking for.
@@ -117,9 +117,9 @@ def flights_for_username (request, username):
     else:
         return json
 
-def recent_flights (request, num):
+def recent_flights(request, num):
     """
-    Returns num list of flights, sorted by recency. No bounding area
+    Returns num list of flights, sorted by recency. No bounding area.
     
     Arguments:
     num: the number you want to return
