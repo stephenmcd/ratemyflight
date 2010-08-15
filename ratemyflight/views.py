@@ -58,13 +58,9 @@ def flights_for_airline(request, iata_code):
     Arguments:
     carrier_code: 2 letter IATA carrier code
     """
-    
-    json = serializers.serialize("json", {})
-    
-    if request:
-        return HttpResponse(json, mimetype="application/json")
-    else:
-        return json
+    flights = Rating.objects.filter(airline__iata_code=iata_code)
+    json = flights_as_json(flights, MAX_FLIGHTS)
+    return HttpResponse(json, mimetype="application/json")
 
 def flights_for_username(request, username):
     """
@@ -73,24 +69,18 @@ def flights_for_username(request, username):
     Arguments:
     username: the username that you are looking for.
     """
-    
-    json = serializers.serialize("json", {})
-    if request:
-        return HttpResponse(json, mimetype="application/json")
-    else:
-        return json
+    flights = Rating.objects.filter(name=username)
+    json = flights_as_json(flights, MAX_FLIGHTS)
+    return HttpResponse(json, mimetype="application/json")
 
-def recent_flights(request, num):
+def recent_flights(request):
     """
     Returns num list of flights, sorted by recency. No bounding area.
     
     Arguments:
     num: the number you want to return
     """
-    
-    json = serializers.serialize("json", {})
-    if request:
-        return HttpResponse(json, mimetype="application/json")
-    else:
-        return json
+    flights = Rating.objects.all().order_by("-id")
+    json = flights_as_json(flights, MAX_FLIGHTS)
+    return HttpResponse(json, mimetype="application/json")
 
