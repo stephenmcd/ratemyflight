@@ -44,8 +44,8 @@ div.flight-info {
     width: 190px;
     background: #fff;
     border: 1px solid #000;
-    height: 60px;
-    z-index: 20;
+    margin-left: 30px;
+    height: 80px;
 }
 
 div.flight-info div.avatar {

@@ -85,7 +85,8 @@ function initialize() {
                   position: new google.maps.LatLng(lat, lng), 
                   map: map,
                   title:n,
-                  icon: airportimage
+                  icon: airportimage,
+                  zIndex: 1
               });  
            }
            airportsLoaded[item.pk] = marker;
@@ -122,7 +123,8 @@ function initialize() {
           var marker = new google.maps.Marker({
                       position: midpoint.LatLng, 
                       map: map,
-                      icon: planeimage
+                      icon: planeimage,
+                      zIndex: 2
                   }); 
                   
           var infoMarker = new RichMarker({
@@ -130,9 +132,10 @@ function initialize() {
             map: map,
             anchor: 4,
             flat: true,
+            zIndex: 200,
             content: GetHTMLForFlightTip(item)
-          
           });
+         
                   
           flightsLoaded[item.id] = true;
           
