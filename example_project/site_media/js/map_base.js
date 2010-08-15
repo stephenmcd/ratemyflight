@@ -33,10 +33,15 @@ function initialize() {
        
        // hit the ajax call for the airports and we'll retrieve them:
        var airporturl = '/api/airport/list/' + sw.lat() + '/' + sw.lng() + 
-                                          '/' + ne.lat() + '/' + ne.lng();
+                                          '/' + ne.lat() + '/' + ne.lng() + "/";
+                                          
+        var flighturl = '/api/flight/list/' + sw.lat() + '/' + sw.lng() + 
+                                          '/' + ne.lat() + '/' + ne.lng() + "/";
+                                          
         $("#map_data").text(airporturl);
 
        $.getJSON(airporturl, null, DisplayAirports);
+       $.getJSON(flighturl, null, DisplayFlights);
 
    
     }
@@ -62,6 +67,13 @@ function initialize() {
        }
     }
     
+    function DisplayFlights(data) {
+      // this function plots the flights on the map
+      
+      // 
+      
+      $("#map_data").text($("#map_data").text() + " flights loaded") ;
+    }
 
 
 
