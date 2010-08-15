@@ -6,9 +6,21 @@ body { width: 100%; background: #e4fafe url("../img/bg.jpg") repeat-x 0 0; font-
 #container { width: 960px; margin: 120px auto 0; background: #fff; -moz-box-shadow: 3px 3px 6px #606060; -webkit-box-shadow: 3px 3px 6px #606060; }
 #header { margin: 0 auto; height: 80px; position: relative; }
 #header h1.logo { position: absolute; top: -87px; left: 341px; display: block; width: 267px; height: 153px; margin: 0 auto; background: url("../img/ratemyflight.png") no-repeat 0 0; text-indent: -9999px; }
-#message { position: absolute; z-index: 30; width: 400px; top: -110px; right: 30px; background: rgba(221, 221, 221, 0.8); text-align: left; -moz-box-shadow: 3px 3px 6px #606060; -webkit-box-shadow: 3px 3px 6px #606060; padding: 15px; margin-bottom: 20px; border: 1px dashed #231f20; }
-#message h2 { margin: 0; font-size: 14px; margin-bottom: 10px; color: #fff;  }
-#message p { font-size: 11px; line-height: 14px; margin-bottom: 6px; }
+
+#message { position: absolute; z-index: 30; width: 400px; top: -110px; 
+    right: 30px; background: #FFFCC3; text-align: left; 
+    -moz-box-shadow: 3px 3px 6px #606060; 
+    -webkit-box-shadow: 3px 3px 6px #606060; 
+    padding: 15px; margin-bottom: 20px; border: 1px solid #231f20; 
+    font-size: 16px;}
+
+#message .close {float:right; text-decoration:none; font-size:18px; 
+    font-weight:bold; color:#000;}
+
+#message code {font-weight:bold;}
+
+#message h2 { margin: 0; font-size: 22px; margin-bottom: 10px; color: #000;  }
+#message p { line-height: 19px; margin-bottom: 6px; }
 #map_holder { position: relative; margin: 0 auto 20px; text-align: center; overflow: hidden; border: 1px solid #231f20; background: #fff; }
 #map_canvas { height: 500px; }
 #map_data { width: 950px; padding: 4px; height: 20px; position: absolute; z-index: 3; top: 0; background: rgba(64, 64, 64, 0.5); text-align: right; color: #fff; }

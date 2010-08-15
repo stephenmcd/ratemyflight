@@ -18,21 +18,18 @@
 <body>
 	<div id="wrapper">
 		<div id="message">
+		    <a class="close" href="#" onclick="$(this).parent().hide(); return false;">X</a>
 			<h2>We need your flight data!</h2>
-			<p>Send a tweet to @ratemyflight or use the hashtag #ratemyflight
-			telling us how good or not your flight was out of 10. Send your
-			tweet like this:<p>
-			<p class="tweet">
-			{Flight Number eg: <strong>BA123</strong>} 
-			{3 letter airport code you left from eg: <strong>LHR</strong>} 
-			{3 letter airport code you went to eg: <strong>SYD</strong>} 
-			{your rating out of 10 eg: <strong>8/10</strong>} 
-			{#ratemyflight or @ratemyflight} {any comments you want
-			to appear next to your rating}
-			</p>
-			<p class="tweet">
-			EG: "<strong>BA123 LHR SYD 8/10</strong> #ratemyflight I really enjoyed this flight!"
-			</p>
+			<p>
+			    Send a tweet with the hashtag <strong>#ratemyflight</strong> and give your 
+			    flight a score out of 10. For example if you flew British 
+			    Airways <strong>(BA)</strong> flight <strong>227</strong> from 
+			    Sydney <strong>(SYD)</strong> to Los Angeles <strong>(LAX)</strong> 
+			    and gave it a rating of <strong>8</strong> you'd tweet:
+			 </p>
+            <code>
+                BA227 SYD LAX 8/10 I really enjoyed this flight! #ratemyflight
+            </code>
 		</div>
 		<div id="container">
 			<div id="header">
