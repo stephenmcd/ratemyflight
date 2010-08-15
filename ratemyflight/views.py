@@ -5,11 +5,11 @@ from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
-from django.utils import simplejson
 
 from ratemyflight.forms import RatingForm
 from ratemyflight.models import Airport, Rating
 from ratemyflight.settings import MAX_AIRPORTS, MAX_FLIGHTS
+from ratemyflight.utils import flights_as_json
 
 
 def home(request, template="index.html"):
@@ -48,17 +48,7 @@ def flights_for_boundary(request, south, west, north, east):
         return HttpResponse("[]", mimetype="application/json")
     flights = Rating.objects.filter(Q(airport_from__in=airports) | 
         Q(airport_to__in=airports))
-    flights = list(flights.values()[:MAX_FLIGHTS])
-    airport_ids = []
-    for flight in flights:
-        airport_ids.extend([flight["airport_from_id"], flight["airport_to_id"]])
-    airports = Airport.objects.filter(pk__in=airport_ids).values()
-    airports = dict([(a["id"], a) for a in airports])
-    for (i, flight) in enumerate(flights):
-        flights[i]["airport_from"] = airports[flight["airport_from_id"]]
-        flights[i]["airport_to"] = airports[flight["airport_to_id"]]
-        del flights[i]["time"] # Not serializeable.
-    json = simplejson.dumps(flights)
+    json = flights_as_json(flights, MAX_FLIGHTS)
     return HttpResponse(json, mimetype="application/json")
     
 def flights_for_airline(request, iata_code):
@@ -68,13 +58,9 @@ def flights_for_airline(request, iata_code):
     Arguments:
     carrier_code: 2 letter IATA carrier code
     """
-    
-    json = serializers.serialize("json", {})
-    
-    if request:
-        return HttpResponse(json, mimetype="application/json")
-    else:
-        return json
+    flights = Rating.objects.filter(airline__iata_code=iata_code)
+    json = flights_as_json(flights, MAX_FLIGHTS)
+    return HttpResponse(json, mimetype="application/json")
 
 def flights_for_username(request, username):
     """
@@ -83,24 +69,18 @@ def flights_for_username(request, username):
     Arguments:
     username: the username that you are looking for.
     """
-    
-    json = serializers.serialize("json", {})
-    if request:
-        return HttpResponse(json, mimetype="application/json")
-    else:
-        return json
+    flights = Rating.objects.filter(name=username)
+    json = flights_as_json(flights, MAX_FLIGHTS)
+    return HttpResponse(json, mimetype="application/json")
 
-def recent_flights(request, num):
+def recent_flights(request):
     """
     Returns num list of flights, sorted by recency. No bounding area.
     
     Arguments:
     num: the number you want to return
     """
-    
-    json = serializers.serialize("json", {})
-    if request:
-        return HttpResponse(json, mimetype="application/json")
-    else:
-        return json
+    flights = Rating.objects.all().order_by("-id")
+    json = flights_as_json(flights, MAX_FLIGHTS)
+    return HttpResponse(json, mimetype="application/json")
 
