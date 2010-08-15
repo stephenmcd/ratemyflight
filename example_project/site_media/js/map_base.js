@@ -67,7 +67,8 @@ function initialize() {
               var marker = new google.maps.Marker({
                   position: new google.maps.LatLng(lat, lng), 
                   map: map,
-                  title:n
+                  title:n,
+                  icon: airportimage
               });  
            }
            airportsLoaded[item.pk] = marker;
@@ -122,6 +123,8 @@ function initialize() {
 
 
     // THIS IS WHERE WE START THE ACTUAL INIT OF THE MAP ETC
+
+    var airportimage = "/site_media/img/airport.png";
 
     var mapOptions = {
         zoom: 4,
