@@ -4,7 +4,7 @@ import os
 project_path = os.path.dirname(os.path.abspath(__file__))
 project_dir = project_path.split(os.sep)[-1]
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
