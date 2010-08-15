@@ -3,8 +3,8 @@ Overview
 ========
 
 `Rate My Flight`_ is a Django application that allows users to rate flights 
-they've taken. The application focuses on the homepage which displays a map 
-of the world and can be used to display data collected in various ways. 
+they've taken. The application focuses around the homepage which displays a 
+map of the world and can be used to display data collected in various ways. 
 Ratings can be entered directly on the website or via twitter. 
 
 `Rate My Flight`_ was created by `Andrew Fisher`_, `Josh de Blank`_ and 
@@ -30,6 +30,7 @@ will create a new Django project with the given ``project_name`` that has the
 .. _`Andrew Fisher`: http://ajfisher.me
 .. _`Josh de Blank`: http://www.joshdeblank.com
 .. _`Stephen McDonald`: http://jupo.org
+.. _`Django Dash`: http://djangodash.com
 .. _`setuptools`: http://pypi.python.org/pypi/setuptools
 .. _`distribute`: http://pypi.python.org/pypi/distribute
 
