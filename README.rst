@@ -24,8 +24,7 @@ or via `distribute`_::
     $ pip install ratemyflight
     
 Once installed you can run the command ``ratemyflight project_name`` which 
-will create a new Djang.. _`MySQL`: http://mysql.com
-o project with the given ``project_name`` that has the 
+will create a new Django project with the given ``project_name`` that has the 
 ``ratemyflight`` app installed.
 
 Consuming Tweets
