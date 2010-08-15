@@ -46,6 +46,99 @@ Los Angeles (LAX) and gave it a rating of 5 due to poor service I'd tweet::
 
     BA227 SYD LAX 5/10 service was awful! #ratemyflight
 
+API
+===
+
+`Rate My Flight`_ primarily consists of an API callable over HTTP that 
+returns JSON data. The following URLs are implemented.
+
+``/api/airport/boundary/<south>/<west>/<north>/<east>/``
+Returns a list of airports (maximum defined in 
+``ratemyflight.settings.MAX_AIRPORTS``) within the given boundaries ``<south>``, 
+``<west>``, ``<north>`` and ``<east>`` which make up latitude and longitude 
+in decimal format.
+
+``/api/flight/boundary/<south>/<west>/<north>/<east>/``
+Returns a list of flights (maximum defined in 
+``ratemyflight.settings.MAX_FLIGHTS``) within the given boundaries ``<south>``, 
+``<west>``, ``<north>`` and ``<east>`` which make up latitude and longitude 
+in decimal format.
+
+``/api/flight/airline/<iata_code>/``
+Returns a list of flights (maximum defined in 
+``ratemyflight.settings.MAX_FLIGHTS``) for the given airline using its given 
+``<iata_code>``.
+
+``/api/flight/username/<username>/``
+Returns a list of flights (maximum defined in 
+``ratemyflight.settings.MAX_FLIGHTS``) that have been given ratings by the 
+given ``<username>``.
+
+``/api/flight/recent/``
+Returns the most recent flights (maximum defined in 
+``ratemyflight.settings.MAX_FLIGHTS``).
+
+JSON
+----
+
+The following examples show the JSON format returns for aiports and flights.
+
+Airports::
+
+    [
+        {
+            pk: 9044,
+            model: "ratemyflight.airport",
+            fields: {
+                city: "Adelaide",
+                name: "Adelaide International",
+                icao_code: "YPAD",
+                longitude: 138.530555555556,
+                iata_code: "ADL",
+                country: 235,
+                latitude: -34.945
+            }
+        }
+    ]
+
+Flights::
+
+    [
+        {
+            comment: "I like turtles!!",
+            flight: "GQ483",
+            name: "stephen_mcd",
+            tweet_id: null,
+            airport_from_id: 9075,
+            airport_from: {
+                city: "Tamworth",
+                name: "Tamworth",
+                icao_code: "YSTW",
+                country_id: 235,
+                longitude: 150.846666666667,
+                iata_code: "TMW",
+                latitude: -31.0838888888889,
+                id: 9075
+            },
+            tweet_text: null,
+            value: 6.7,
+            airport_to_id: 2082,
+            avatar_url: "http://a3.twimg.com/profile_images/690849843/UNI_2223_normal.jpg",
+            airline_id: 1428,
+            airport_to: {
+                city: "Swartkop",
+                name: "Swartkop",
+                icao_code: "FASK",
+                country_id: 43,
+                longitude: 28.1644444444444,
+                iata_code: "N/A",
+                latitude: -25.8094444444444,
+                id: 2082
+            },
+            id: 81
+        }
+    ]
+
 Notes
 =====
 
