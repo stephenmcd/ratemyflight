@@ -36,10 +36,11 @@ def airports_for_boundary(request, south, west, north, east):
 
 def flights_for_boundary(request, south, west, north, east):
     """
-    Returns the flights within the bounding box supplied. Since select_related 
-    isn't smart enough to do a couple of JOINs onto the aiports, we have to 
-    graft the airports onto the flights. We also need to call values() on both 
-    the airports and flights since simplejson doesn't understand models.
+    Returns the flights within the bounding box supplied. Since I'm not 
+    smart enough to get select_related to do a couple of JOINs onto the 
+    aiports, we have to graft the airports onto the flights. We also need to 
+    call values() on both the airports and flights since simplejson doesn't 
+    understand models.
     """
     try:
         airports = Airport.objects.for_boundary(south, west, north, east)
