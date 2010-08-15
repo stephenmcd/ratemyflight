@@ -12,7 +12,7 @@ body { width: 100%; background: #e4fafe url("../img/bg.jpg") repeat-x 0 0; font-
 #map_holder { position: relative; margin: 0 auto 20px; text-align: center; overflow: hidden; border: 1px solid #231f20; background: #fff; }
 #map_canvas { height: 500px; }
 #map_data { width: 950px; padding: 4px; height: 20px; position: absolute; z-index: 3; top: 0; background: rgba(64, 64, 64, 0.5); text-align: right; color: #fff; }
-#form_rater { width: 450px; height: 430px; background: rgba(21, 21, 21, 0.95); position: absolute; z-index: 100; top: 20px; left: 20px; -moz-border-radius: 10px; border-radius: 10px; border: 2px solid #fff; padding: 20px; }
+#form_rater { width: 350px; height: 430px; background: rgba(21, 21, 21, 0.95); position: absolute; z-index: 100; top: 20px; left: 20px; -moz-border-radius: 10px; border-radius: 10px; border: 2px solid #fff; padding: 10px 20px; }
 #form_rater h2 { height: 30px; color: #fff; font-size: 21px; text-align: left; }
 
 /**div#form_rater {
@@ -36,5 +36,5 @@ form.rate td { font-size: 10px; text-align: left; }
 form.rate input, form.rate select, form.rate textarea { width: 120px; height: 10px; padding: 5px; border: 2px solid #65cce7; -moz-border-radius: 5px; border-radius: 5px;  }
 form.rate select { height: 25px; width: 135px; }
 form.rate textarea { height: 60px; }
-form.rate input[type="submit"] { height: 40px; margin-top: 10px; font-size: 18px; color:#fff; background: #212121; cursor: pointer; }
+form.rate input[type="submit"] { height: 40px; margin: 10px 0 0 25px; font-size: 18px; color:#fff; background: #212121; cursor: pointer; }
 form.rate input[type="submit"]:hover { background: #65cce7; color: #212121; }
