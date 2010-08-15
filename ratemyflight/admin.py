@@ -11,7 +11,7 @@ class AirlineAdmin(admin.ModelAdmin):
     list_display_links = ("name", "callsign", "country", "iata_code", 
         "icao_code",)
     list_filter = ("country",)
-    search_fields = ("name", "callsign", "country", "iata_code", "icao_code",)
+    search_fields = ("name", "callsign", "iata_code", "icao_code",)
 
 
 class AirportAdmin(admin.ModelAdmin):
@@ -21,7 +21,7 @@ class AirportAdmin(admin.ModelAdmin):
     list_display_links = ("name", "city", "country", "iata_code", "icao_code", 
         "latitude", "longitude",)
     list_filter = ("country",)
-    search_fields = ("name", "city", "country", "iata_code", "icao_code",)
+    search_fields = ("name", "city", "iata_code", "icao_code",)
 
 
 class RatingAdmin(admin.ModelAdmin):
