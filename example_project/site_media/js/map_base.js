@@ -4,6 +4,10 @@ var initialLoc;
 var browserSupportFlag = new Boolean();   
 var EventID = false;  // used as a flag for the boundary changes   
 
+var airportList = new Array();
+var airportsLoaded = {};
+var flightList = new Array();
+
 function initialize() {
     // this function initialises the map to the starting position and zoom
     // to the div in the page. 
@@ -43,6 +47,7 @@ function initialize() {
        $.getJSON(airporturl, null, DisplayAirports);
        $.getJSON(flighturl, null, DisplayFlights);
 
+        CleanupBounding();
    
     }
 
@@ -52,19 +57,31 @@ function initialize() {
        for (i=0; i< data.length; i++) {
          item = data[i];
          
-         if (item.fields["iata_code"] != null) {
-            lat = item.fields["latitude"];
-            lng = item.fields["longitude"];
-            n = item.fields["name"];
+         if (! airportsLoaded[item.pk]) {
+         
+           if (item.fields["iata_code"] != null) {
+              lat = item.fields["latitude"];
+              lng = item.fields["longitude"];
+              n = item.fields["name"];
 
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(lat, lng), 
-                map: map,
-                title:n
-            });  
-         }
+              var marker = new google.maps.Marker({
+                  position: new google.maps.LatLng(lat, lng), 
+                  map: map,
+                  title:n
+              });  
+           }
+           airportsLoaded[item.pk] = marker;
+        }
        
        }
+       
+       allist=0;
+       for (k in airportsLoaded){
+        allist++;
+      }
+        
+       
+       $("#map_data").text($("#map_data").text() + " // " + allist + " airports //") ;
     }
     
     function DisplayFlights(data) {
@@ -75,7 +92,36 @@ function initialize() {
       $("#map_data").text($("#map_data").text() + " flights loaded") ;
     }
 
+    function CleanupBounding() {
+      // this function removes all of the items that are outside of the bounding
+      // area of the map.
+      
+      bounds = map.getBounds();
+      
+      for (k in airportsLoaded) {
+  
+        if (! bounds.contains(airportsLoaded[k].getPosition())) {
+          // remove the point off the map
+          airportsLoaded[k].setMap(null);
+          
+          // remove the point from the array
+          delete airportsLoaded[k]; // = null
+        }
+      }
+      
+      
+      allist=0;
+       for (k in airportsLoaded){
+        allist++;
+      }
+      $("#map_data").text("Airports: " + allist + " // ");
+    
+    
+    }
 
+
+
+    // THIS IS WHERE WE START THE ACTUAL INIT OF THE MAP ETC
 
     var mapOptions = {
         zoom: 4,
@@ -114,7 +160,7 @@ function initialize() {
       function() {
         if (EventID) {
           clearTimeout(EventID);
-          console.log("cleared");
+          //console.log("cleared");
         } 
         EventID = setTimeout(boundaryChange, 1000);
       }        
