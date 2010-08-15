@@ -115,11 +115,9 @@ function initialize() {
 
       flightPath.setMap(map);
 
-      //alert(distance(mel, lax) / 2);
       
       midpoint = mel.midpointLocation(lax, distance(mel, lax) * 0.80);
       
-      alert(midpoint.bearing);
       var marker = new google.maps.Marker({
                   position: midpoint.LatLng, 
                   map: map,
