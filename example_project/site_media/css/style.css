@@ -4,10 +4,10 @@ body { width: 100%; position: relative; background: #66cbe7 url("../img/bg.gif")
 #container { width: 1000px; position: relative; margin: 0 auto; }
 div#header { margin: 0 auto; }
 #header h1.logo { display: block; width: 220px; height: 127px; margin: 15px 0; background: url("../img/ratemyflight.png") no-repeat 0 0; text-indent: -9999px; }
-div#message { background: #bbb; text-align: left; -moz-box-shadow: 10px 10px 10px #231f20; -webkit-box-shadow: 10px 10px 10px #231f20; padding: 15px; margin-bottom: 20px; border: 1px solid #231f20; }
+div#message { background: #bbb; text-align: left; -moz-box-shadow: 3px 3px 6px #606060; -webkit-box-shadow: 3px 3px 6px #606060; padding: 15px; margin-bottom: 20px; border: 1px solid #231f20; }
 div#message h2 { margin: 0; font-size: 14px; }
 div#message p { font-size: 11px; }
-div#map_holder { background: #fff; margin: 0 auto; text-align: center; -moz-box-shadow: 10px 10px 10px #231f20; margin-bottom: 20px; position: relative; }
+div#map_holder { position: relative; margin: 0 auto 20px; text-align: center; overflow: hidden; -moz-box-shadow: 3px 3px 6px #606060; border: 1px solid #231f20; background: #fff; }
 div#map_canvas { height: 500px; }
 div#map_data { width: 992px; padding: 4px; height: 20px; position: absolute; z-index: 3; top: 0; background: rgba(64, 64, 64, 0.5); text-align: right; color: #fff; }
 div#form_rater { display: none; width: 500px; height: 30px; background: #231f20; color: #888; position: absolute; z-index: 3;

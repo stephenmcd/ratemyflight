@@ -67,7 +67,8 @@ function initialize() {
               var marker = new google.maps.Marker({
                   position: new google.maps.LatLng(lat, lng), 
                   map: map,
-                  title:n
+                  title:n,
+                  icon: airportimage
               });  
            }
            airportsLoaded[item.pk] = marker;
@@ -75,19 +76,22 @@ function initialize() {
        
        }
        
-       allist=0;
+       /**allist=0;
        for (k in airportsLoaded){
         allist++;
-      }
+      }**/
         
        
-       $("#map_data").text($("#map_data").text() + " // " + allist + " airports //") ;
+       //$("#map_data").text($("#map_data").text() + " // " + allist + " airports //") ;
     }
     
     function DisplayFlights(data) {
       // this function plots the flights on the map
       
       // 
+      
+      
+      
       
       $("#map_data").text($("#map_data").text() + " flights loaded") ;
     }
@@ -110,11 +114,11 @@ function initialize() {
       }
       
       
-      allist=0;
+      /**allist=0;
        for (k in airportsLoaded){
         allist++;
-      }
-      $("#map_data").text("Airports: " + allist + " // ");
+      }**/
+      //$("#map_data").text("Airports: " + allist + " // ");
     
     
     }
@@ -122,6 +126,8 @@ function initialize() {
 
 
     // THIS IS WHERE WE START THE ACTUAL INIT OF THE MAP ETC
+
+    var airportimage = "/site_media/img/airport.png";
 
     var mapOptions = {
         zoom: 4,
