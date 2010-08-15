@@ -1,6 +1,7 @@
 
 from django.core import serializers
 from django.core.urlresolvers import reverse
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
@@ -21,76 +22,42 @@ def rating(request, template="rating.html"):
     context = {"form": form}
     return render_to_response(template, context, RequestContext(request))
 
+def boundary_filter(south, west, north, east):
+    """
+    Return the given boundary as a Q object suitable for querysets.
+    """
+    return Q(latitude__gt=south, longitude__gt=west, 
+        latitude__lt=north, longitude__lt=east)
+
 def airports_for_boundary(request, south, west, north, east):
     """
     Return a JSON formatted list of airports in the given boundary.
     """
-    
-    lookup = {}
-    lookup_alt = {}
-    
-    #do a really quick check to determine if we are crossing the PM or IDL
-    if float(west) * float(east) < 0:
-        # we need to do two lookups but we need to determine which side of
-        # which meridian you actually are.
-        
-        #TODO: convert this back to a Q object
-        
-        # this check looks to see if we are closer to the IDL or the PM.
-        # that then determines how we do the split on the two lookups
-        if (180 - float(west)) < float(west) :
-            #we're closest to IDL
-            try:
-                lookup = {
-                    "latitude__gt": float(south), "longitude__gt": float(west),
-                    "latitude__lt": float(north), "longitude__lt": 180,
-                }
-                lookup_alt = {
-                    "latitude__gt": float(south), "longitude__gt": -180,
-                    "latitude__lt": float(north), "longitude__lt": float(east),
-                }   
-                
-            except ValueError:
-                lookup = {}
-                lookup_alt={}
-        else:
-        
-            # closest to PM
-            try:
-                lookup = {
-                    "latitude__gt": float(south), "longitude__gt": float(west),
-                    "latitude__lt": float(north), "longitude__lt": 0,
-                }
-                lookup_alt = {
-                    "latitude__gt": float(south), "longitude__gt": 0,
-                    "latitude__lt": float(north), "longitude__lt": float(east),
-                }   
-                
-            except ValueError:
-                lookup = {}
-                lookup_alt={}
-        
-    else:
-        #we only need to do one lookup in this instance
-    
-        try:
-            lookup = {
-                "latitude__gt": float(south), "longitude__gt": float(west),
-                "latitude__lt": float(north), "longitude__lt": float(east),
-            }
-        except ValueError:
-            lookup = {}
-    
-    airports = Airport.objects.filter(**lookup)
-    airports_alt = Airport.objects.filter(**lookup_alt)
-    
-    json = serializers.serialize("json", (airports | airports_alt)[:MAX_AIRPORTS])
 
-    if request:
-        return HttpResponse(json, mimetype="application/json")
+    try:
+        south = float(south)
+        west = float(west)
+        north = float(north)
+        east = float(east)
+    except ValueError:
+        return HttpResponse("[]", mimetype="application/json")
+        
+    # Check if the boundary overlaps a hemisphere line and if so, we need to 
+    # look up either side of the hemisphere line.
+    if west * east < 0:
+        if (180 - west) < west:
+            # Closest to International Date Line.
+            lookup = (boundary_filter(south, west, north, 180) | 
+                boundary_filter(south, -180, north, east))
+        else:
+            # Closest to Prime Meridian.
+            lookup = (boundary_filter(south, west, north, 0) | 
+                boundary_filter(south, 0, north, east))
     else:
-        #used to display the data at command line
-        return json
+        lookup = boundary_filter(south, west, north, east)
+    airports = Airport.objects.filter(lookup)
+    json = serializers.serialize("json", airports[:MAX_AIRPORTS])
+    return HttpResponse(json, mimetype="application/json")
     
 def flights_for_boundary(request, south, west, north, east):
     """
