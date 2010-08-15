@@ -30,42 +30,39 @@ function initialize() {
        var bounds = map.getBounds();
        var sw = bounds.getSouthWest();
        var ne = bounds.getNorthEast()
-       var data = "SW: (" + sw.lat() + ", " + 
-       sw.lng() + ") NE: (" + ne.lat() + 
-       ", " + ne.lng() + ")";
        
        // hit the ajax call for the airports and we'll retrieve them:
-       var apiurl = '/api/airport/list/' + sw.lat() + '/' + sw.lng() + 
+       var airporturl = '/api/airport/list/' + sw.lat() + '/' + sw.lng() + 
                                           '/' + ne.lat() + '/' + ne.lng();
-      $("#map_data").text(apiurl);
+        $("#map_data").text(airporturl);
 
-       $.getJSON(apiurl, null, DisplayAirports);
+       $.getJSON(airporturl, null, DisplayAirports);
+
    
     }
 
     function DisplayAirports(data) {
       // this function plots the airports on the map.
-            //$("#map_data").text("displayed airports");
             
        for (i=0; i< data.length; i++) {
          item = data[i];
          
          if (item.fields["iata_code"] != null) {
-           lat = item.fields["latitude"];
-           lng = item.fields["longitude"];
-           n = item.fields["name"];
-           
-           var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(lat, lng), 
-            map: map,
-            title:n
+            lat = item.fields["latitude"];
+            lng = item.fields["longitude"];
+            n = item.fields["name"];
+
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(lat, lng), 
+                map: map,
+                title:n
             });  
          }
        
        }
-            
-            
     }
+    
+
 
 
     var mapOptions = {
