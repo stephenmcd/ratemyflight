@@ -98,11 +98,18 @@ function initialize() {
     
     function GetPlaneImage(deg) {
       // this function gets the plane image that is appropriate
+      
+      if (deg < 0) {
+        // switch it back to 360 deg;
+        deg = 360 + deg;
+      }
+      
+      
       var planeimage = new google.maps.MarkerImage(
-      "/site_media/img/plane.png",
-      new google.maps.Size(20, 21),
+      "/site_media/img/planes/" + Math.floor(deg) +  ".png",
+      new google.maps.Size(20, 20),
       new google.maps.Point(0, 0),
-      new google.maps.Point(10, 11) );
+      new google.maps.Point(10, 10) );
     
     
       return (planeimage);
@@ -131,16 +138,15 @@ function initialize() {
 
           flightPath.setMap(map);
           
-          midpoint = dept.midpointLocation(arr, distance(dept, arr) * Math.random());
+          midpoint = dept.midpointLocation(arr, distance(dept, arr) * 0.10);
           
           var midpointmarker = new google.maps.Marker({
                       position: midpoint.LatLng, 
                       map: map,
-                      icon: GetPlaneImage(),
+                      icon: GetPlaneImage(midpoint.bearing),
                       zIndex: 2,
                   }); 
                   
-          $("div[title=mpm" + item.id + "]").css("border", "10 px solid red")
                   
           var infoMarker = new RichMarker({
             position: midpoint.LatLng,
@@ -225,7 +231,7 @@ function initialize() {
         midpointObject  = {};
         midpointObject.LatLng = new google.maps.LatLng(toDeg(lat2), toDeg(lon2));
         midpointObject.bearing = toDeg(brng);
-
+        
        return midpointObject;
     }
 
