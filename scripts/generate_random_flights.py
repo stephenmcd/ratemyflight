@@ -32,7 +32,7 @@ for i in range(flights):
     rating = Rating()
     rating.name = user[0]
     rating.avatar_url = user[1]
-    rating.value = random() * 10.
+    rating.value = float("%.1f" % (random() * 10.))
     rating.airline = choice(airlines)
     rating.flight = "%s%s" % (rating.airline.iata_code, randint(100, 999))
     rating.airport_from = choice(airports)
