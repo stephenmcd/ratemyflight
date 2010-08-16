@@ -41,7 +41,7 @@ div.content a:hover { text-decoration: underline;}
 div.content a:visited {color: #c73e3d;}
 
 #footer { margin: 10px auto; text-align: center; }
-#footer > p { font-size: 18px; color: #231f20; }
+#footer > p { font-size: 16px; color: #231f20; }
 .cl { clear: both; }
 form.rate li { list-style: none; }
 form.rate label { width: 50px; }
