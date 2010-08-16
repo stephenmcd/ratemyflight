@@ -23,10 +23,17 @@ body { width: 100%; background: #e4fafe url("../img/bg.jpg") repeat-x 0 0; font-
 
 #message h2 { margin: 0; font-size: 22px; margin-bottom: 10px; color: #000;  }
 #message p { line-height: 19px; margin-bottom: 6px; }
-#map_holder { position: relative; margin: 0 auto 20px; text-align: center; overflow: hidden; border: 1px solid #231f20; background: #fff; }
+#map_holder { position: relative; margin: 0 auto 20px; text-align: center;  border: 1px solid #231f20; background: #fff; }
 #map_canvas { height: 500px; }
 #map_data { width: 950px; padding: 4px; height: 20px; position: absolute; z-index: 3; top: 0; background: rgba(64, 64, 64, 0.5); text-align: right; color: #fff; }
-#form_rater { width: 350px; height: 430px; background: rgba(21, 21, 21, 0.95); position: absolute; z-index: 100; top: 20px; left: 20px; -moz-border-radius: 10px; border-radius: 10px; border: 2px solid #fff; padding: 10px 20px; }
+
+#map_holder .close {float:right; text-decoration:none; font-size:18px; 
+    font-weight:bold; color:#fff;}
+
+#form_rater { width: 350px; background: rgba(21, 21, 21, 0.95); 
+    position: absolute; z-index: 100; top: 20px; left: -100px; 
+    -moz-border-radius: 10px; border-radius: 10px;
+     border: 2px solid #fff; padding: 10px 20px; }
 #form_rater h2 { height: 30px; color: #fff; font-size: 21px; text-align: left; }
 
 /**div#form_rater {
@@ -40,7 +47,6 @@ body { width: 100%; background: #e4fafe url("../img/bg.jpg") repeat-x 0 0; font-
 #footer { margin: 10px auto; text-align: center; }
 #footer > p { font-size: 18px; color: #231f20; }
 .cl { clear: both; }
-#form_rater { display: none;}
 form.rate li { list-style: none; }
 form.rate label { width: 50px; }
 form.rate table { margin: 10px 0 0 30px; }

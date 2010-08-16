@@ -25,6 +25,7 @@
 	<div id="map_canvas"></div>
 	<div id="map_data">Here is some map data</div>
 	<div id="form_rater">
+	    <a class="close" href="#" onclick="$(this).parent().hide(); return false;">X</a>
 		<h2>Rate a flight</h2>
 		<form method="post" class="rate">
 			<table>{{ form.as_table }}</table>
