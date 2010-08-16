@@ -20,7 +20,7 @@ def home(request, template="index.html"):
     form = RatingForm(request.POST or None)
     if request.method == "POST" and form.is_valid():
         form.save()
-        return redirect(reverse("rating"))
+        return redirect(reverse("home"))
     context = {
         "form": form,
         "top_airlines": Airline.objects \
