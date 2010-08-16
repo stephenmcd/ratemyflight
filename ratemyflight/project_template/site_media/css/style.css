@@ -16,12 +16,15 @@ body { width: 100%; background: #e4fafe url("../img/bg.jpg") repeat-x 0 0; font-
 #map_holder .close { float:right; text-decoration:none; font-size:18px; font-weight:bold; color:#fff; }
 #form_rater { width: 350px; background: rgba(21, 21, 21, 0.95); position: absolute; z-index: 100; top: 20px; left: -100px; -moz-border-radius: 10px; border-radius: 10px; border: 2px solid #fff; padding: 10px 20px; }
 #form_rater h2 { height: 30px; color: #fff; font-size: 21px; text-align: left; }
-div.content a { text-decoration: none; color: #00bed4}
-div.content a:hover { text-decoration: underline;}
-div.content a:visited {color: #c73e3d;}
+
+div.content a, #footer a { text-decoration: none; color: #00bed4}
+div.content a:hover, #footer a:hover { text-decoration: underline;}
+div.content a:visited, #footer a:visited {color: #c73e3d;}
+
 
 #footer { margin: 10px auto; text-align: center; font-size: 14px; color: #23536e;  }
 #footer > p { font-size: 18px; color: #231f20; }
+
 .cl { clear: both; }
 form.rate li { list-style: none; }
 form.rate label { width: 50px; }
