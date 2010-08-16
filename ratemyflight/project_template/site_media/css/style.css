@@ -88,3 +88,12 @@ div.flight-info div.flight {
 #rankings .last {border-right-width:0px !important;}
 #rankings li {font-size:16px; margin-top:5px;}
 
+div.flight-info div.rating { 
+    background: url(/site_media/img/stars_g.png) no-repeat;
+    text-align: left;
+}
+
+div.flight-info div.rating div {
+    overflow: hidden;
+    height: 17px;
+}

@@ -59,7 +59,7 @@ function initialize() {
         var flighturl = '/api/flight/boundary/' + sw.lat() + '/' + sw.lng() + 
                                           '/' + ne.lat() + '/' + ne.lng() + "/";
                                           
-        $("#map_data").text(flighturl);
+        //$("#map_data").text(flighturl);
 
        $.getJSON(airporturl, null, DisplayAirports);
        $.getJSON(flighturl, null, DisplayFlights);
