@@ -51,7 +51,7 @@
 <ul class="last">
     <li><h3>Top Fliers</h3></li>
     {% for flyer in top_flyers %}
-    <li><img src="{{ flyer.avatar_url }}">{{ flyer.name }} [Flights: {{ flyer.flights }}]</li>
+    <li><img src="{{ flyer.avatar_url|default:"/site_media/img/default_avatar.png" }}">{{ flyer.name }} [Flights: {{ flyer.flights }}]</li>
     {% endfor %}
 </ul>
 <br clear="all" />

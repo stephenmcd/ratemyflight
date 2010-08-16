@@ -11,6 +11,10 @@ function GetHTMLForFlightTip(item) {
     if (dest == "N/A") dest = item.airport_to.icao_code;
     
     ratingval = Math.floor(item.value * 10); // convert to a percentage
+    var avatar = item.avatar_url;
+    if (!avatar) {
+        avatar = '/site_media/img/default_avatar.png';
+    }
     
     content = 
         '<div class="flight-info">' +
