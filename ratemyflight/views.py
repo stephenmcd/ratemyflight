@@ -1,7 +1,7 @@
 
 from django.core import serializers
 from django.core.urlresolvers import reverse
-from django.db.models import Q
+from django.db.models import Avg, Count, Q
 from django.http import HttpResponse
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
@@ -12,6 +12,7 @@ from ratemyflight.settings import MAX_AIRPORTS, MAX_FLIGHTS, TOP_LISTS_AMOUNT
 from ratemyflight.utils import flights_as_json
 
 
+ 
 def home(request, template="index.html"):
     """
     Homepage view - handle rating form.
@@ -22,12 +23,20 @@ def home(request, template="index.html"):
         return redirect(reverse("rating"))
     context = {
         "form": form,
-        "top_airlines": Airline.objects.values_list("name", 
-            flat=True)[:TOP_LISTS_AMOUNT],
-        "top_destinations": Airport.objects.values_list("name", 
-            flat=True)[:TOP_LISTS_AMOUNT],
-        "top_flyers": Rating.objects.values_list("name", 
-            flat=True)[:TOP_LISTS_AMOUNT],
+        "top_airlines": Airline.objects \
+            .annotate(rating=Avg("ratings__value")) \
+            .filter(rating__isnull=False)
+            .order_by("-rating") \
+            .values("name", "rating")[:TOP_LISTS_AMOUNT],
+        "top_destinations": Airport.objects \
+            .annotate(rating=Avg("ratings_as_to__value")) \
+            .filter(rating__isnull=False)
+            .order_by("-rating") \
+            .values("name", "rating")[:TOP_LISTS_AMOUNT],
+        "top_flyers": Rating.objects \
+            .values("name", "avatar_url") \
+            .annotate(flights=Count("id")) \
+            .order_by("-flights")[:TOP_LISTS_AMOUNT],
     }
     return render_to_response(template, context, RequestContext(request))
 
