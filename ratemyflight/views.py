@@ -8,7 +8,7 @@ from django.template import RequestContext
 
 from ratemyflight.forms import RatingForm
 from ratemyflight.models import Airport, Rating
-from ratemyflight.settings import MAX_AIRPORTS, MAX_FLIGHTS
+from ratemyflight.settings import MAX_AIRPORTS, MAX_FLIGHTS, TOP_LISTS_AMOUNT
 from ratemyflight.utils import flights_as_json
 
 
