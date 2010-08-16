@@ -107,9 +107,9 @@ function initialize() {
       
       var planeimage = new google.maps.MarkerImage(
       "/site_media/img/planes/" + Math.floor(deg) +  ".png",
-      new google.maps.Size(20, 20),
+      new google.maps.Size(24, 24),
       new google.maps.Point(0, 0),
-      new google.maps.Point(10, 10) );
+      new google.maps.Point(12, 12) );
     
     
       return (planeimage);
