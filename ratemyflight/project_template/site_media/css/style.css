@@ -36,13 +36,9 @@ body { width: 100%; background: #e4fafe url("../img/bg.jpg") repeat-x 0 0; font-
      border: 2px solid #fff; padding: 10px 20px; }
 #form_rater h2 { height: 30px; color: #fff; font-size: 21px; text-align: left; }
 
-/**div#form_rater {
-    width: 500px;
-    height: 40px;
-    background: #fff;
-    text-align: center;
-    position: absolute;
-}**/
+div.content a { text-decoration: none; color: #00bed4}
+div.content a:hover { text-decoration: underline;}
+div.content a:visited {color: #c73e3d;}
 
 #footer { margin: 10px auto; text-align: center; }
 #footer > p { font-size: 18px; color: #231f20; }
