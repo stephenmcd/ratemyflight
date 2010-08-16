@@ -73,9 +73,9 @@ class Rating(models.Model):
     airline = models.ForeignKey("Airline", related_name="ratings", 
         blank=True, null=True)
     airport_from = models.ForeignKey("Airport", verbose_name="Airport from",
-        related_name="airports_from", blank=True, null=True)
+        related_name="ratings_as_from", blank=True, null=True)
     airport_to = models.ForeignKey("Airport", verbose_name="Airport to",
-        related_name="airports_to", blank=True, null=True)
+        related_name="ratings_as_to", blank=True, null=True)
     comment = models.TextField(_("Comment"), blank=True, null=True)
     tweet_id = models.IntegerField("Tweet ID", blank=True, null=True)
     tweet_text = models.CharField("Tweet text", max_length=140, blank=True, 
