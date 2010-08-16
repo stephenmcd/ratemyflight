@@ -1,3 +1,63 @@
 {% extends "base.html" %}
 
-{% block main %}ABOUT.{% endblock %}
+{% block main %}
+
+
+<div class="content">
+<h1>About</h1>
+			<p><a class="reference external" href="http://ratemyflight.org">Rate My Flight</a> is a Django application that allows users to rate flights
+they've taken. The application consists of two parts: an API and the homepage
+which implements it by displaying a map of the world which can be used to
+display data collected in various ways. Ratings can be entered directly on
+the website or via twitter.</p>
+<p><a class="reference external" href="http://ratemyflight.org">Rate My Flight</a> was created by <a class="reference external" href="http://ajfisher.me">Andrew Fisher</a>, <a class="reference external" href="http://www.joshdeblank.com">Josh de Blank</a> and
+<a class="reference external" href="http://jupo.org">Stephen McDonald</a> for the <a class="reference external" href="http://djangodash.com">Django Dash</a> competition 2010.</p>
+<div class="section" id="installation">
+<h2>Installation</h2>
+<p><a class="reference external" href="http://ratemyflight.org">Rate My Flight</a> is available on pypi and can be installed via
+<a class="reference external" href="http://pypi.python.org/pypi/setuptools">setuptools</a>:</p>
+<pre class="literal-block">$ easy_install -U ratemyflight
+</pre>
+<p>or via <a class="reference external" href="http://pypi.python.org/pypi/distribute">distribute</a>:</p>
+<pre class="literal-block">$ pip install ratemyflight
+</pre>
+<p>Once installed you can run the command <tt class="docutils literal">ratemyflight project_name</tt> which
+will create a new Django project with the given <tt class="docutils literal">project_name</tt> that has the
+<tt class="docutils literal">ratemyflight</tt> app installed.</p>
+</div>
+<div class="section" id="consuming-tweets">
+<h2>Consuming Tweets</h2>
+<p>In order to consume tweets it is necessary to create a cron job that runs
+the command in your project's directory:</p>
+<pre class="literal-block">$ python manage.py poll_twitter
+</pre>
+<p>Once the cron job is running it will consume tweets containing the hash tag
+<tt class="docutils literal">#ratemyflight</tt> if found to contain rating information in the following
+format:</p>
+<pre class="literal-block">flight_number airport_from airport_to rating comment hashtag
+</pre>
+<p>For example if you flew British Airways (BA) flight 227 from Sydney (SYD) to
+Los Angeles (LAX) and gave it a rating of 8 you'd tweet:</p>
+<pre class="literal-block">BA227 SYD LAX 8/10 I really enjoyed this flight! #ratemyflight
+</pre>
+</div>
+
+<h2>Notes</h2>
+<p><a class="reference external" href="http://ratemyflight.org">Rate My Flight</a> has no specific dependencies but was developed and deployed
+with the following software selected for its environment, and using
+alternatives may result in issues due to limited amount of testing over the
+48 hour competition period.</p>
+<blockquote>
+<ul class="simple">
+<li><a class="reference external" href="http://python.org">Python 2.5</a></li>
+<li><a class="reference external" href="http://djangoproject.com">Django 1.2</a></li>
+<li><a class="reference external" href="http://nginx.net">nginx</a></li>
+<li><a class="reference external" href="http://gunicorn.org">gunicorn</a></li>
+<li><a class="reference external" href="http://ubuntu.com">Ubuntu</a></li>
+<li><a class="reference external" href="http://www.google.com/chrome/">Google Chrome</a> - <a class="reference external" href="http://mozilla.com/firefox/">Firefox</a> showed various issues with <a class="reference external" href="http://maps.google.com">Google Maps</a>. <a class="reference external" href="http://www.microsoft.com/windows/internet-explorer">Internet Explorer</a> surely won't render some elements.</li>
+<li><a class="reference external" href="http://www.sqlite.org">SQLite</a> - <a class="reference external" href="http://mysql.com">MySQL</a> can be used but will raise an error while installing fixtures. In this case simply set the collation for the column <tt class="docutils literal">ratemyflight_airline.name</tt> to unicode and re-run <tt class="docutils literal">syncdb</tt>.</li>
+</ul>
+</blockquote>
+</div>
+
+{% endblock %}
