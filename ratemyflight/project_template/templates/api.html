@@ -1,3 +1,89 @@
 {% extends "base.html" %}
 
-{% block main %}API.{% endblock %}
+{% block main %}
+
+<div class="content">
+<h1>API</h1>
+<p><a class="reference external" href="http://ratemyflight.org">Rate My Flight</a> primarily consists of an API callable over HTTP that
+returns JSON data. The following URLs are implemented.</p>
+<p><tt class="docutils literal"><span class="pre">/api/airport/boundary/&lt;south&gt;/&lt;west&gt;/&lt;north&gt;/&lt;east&gt;/</span></tt>
+Returns a list of airports (maximum defined in
+<tt class="docutils literal">ratemyflight.settings.MAX_AIRPORTS</tt>) within the given boundaries <tt class="docutils literal">&lt;south&gt;</tt>,
+<tt class="docutils literal">&lt;west&gt;</tt>, <tt class="docutils literal">&lt;north&gt;</tt> and <tt class="docutils literal">&lt;east&gt;</tt> which make up latitude and longitude
+in decimal format.</p>
+<p><tt class="docutils literal"><span class="pre">/api/flight/boundary/&lt;south&gt;/&lt;west&gt;/&lt;north&gt;/&lt;east&gt;/</span></tt>
+Returns a list of flights (maximum defined in
+<tt class="docutils literal">ratemyflight.settings.MAX_FLIGHTS</tt>) within the given boundaries <tt class="docutils literal">&lt;south&gt;</tt>,
+<tt class="docutils literal">&lt;west&gt;</tt>, <tt class="docutils literal">&lt;north&gt;</tt> and <tt class="docutils literal">&lt;east&gt;</tt> which make up latitude and longitude
+in decimal format.</p>
+<p><tt class="docutils literal"><span class="pre">/api/flight/airline/&lt;iata_code&gt;/</span></tt>
+Returns a list of flights (maximum defined in
+<tt class="docutils literal">ratemyflight.settings.MAX_FLIGHTS</tt>) for the given airline using its given
+<tt class="docutils literal">&lt;iata_code&gt;</tt>.</p>
+<p><tt class="docutils literal"><span class="pre">/api/flight/username/&lt;username&gt;/</span></tt>
+Returns a list of flights (maximum defined in
+<tt class="docutils literal">ratemyflight.settings.MAX_FLIGHTS</tt>) that have been given ratings by the
+given <tt class="docutils literal">&lt;username&gt;</tt>.</p>
+<p><tt class="docutils literal">/api/flight/recent/</tt>
+Returns the most recent flights (maximum defined in
+<tt class="docutils literal">ratemyflight.settings.MAX_FLIGHTS</tt>).</p>
+<div class="section" id="json">
+<h3>JSON</h3>
+<p>The following examples show the JSON format returns for aiports and flights.</p>
+<p>Airports:</p>
+<pre class="literal-block">[
+    {
+        pk: 9044,
+        model: "ratemyflight.airport",
+        fields: {
+            city: "Adelaide",
+            name: "Adelaide International",
+            icao_code: "YPAD",
+            longitude: 138.530555555556,
+            iata_code: "ADL",
+            country: 235,
+            latitude: -34.945
+        }
+    }
+]
+</pre>
+<p>Flights:</p>
+<pre class="literal-block">[
+    {
+        comment: "I like turtles!!",
+        flight: "GQ483",
+        name: "stephen_mcd",
+        tweet_id: null,
+        airport_from_id: 9075,
+        airport_from: {
+            city: "Tamworth",
+            name: "Tamworth",
+            icao_code: "YSTW",
+            country_id: 235,
+            longitude: 150.846666666667,
+            iata_code: "TMW",
+            latitude: -31.0838888888889,
+            id: 9075
+        },
+        tweet_text: null,
+        value: 6.7,
+        airport_to_id: 2082,
+        avatar_url: "http://a3.twimg.com/profile_images/690849843/UNI_2223_normal.jpg",
+        airline_id: 1428,
+        airport_to: {
+            city: "Swartkop",
+            name: "Swartkop",
+            icao_code: "FASK",
+            country_id: 43,
+            longitude: 28.1644444444444,
+            iata_code: "N/A",
+            latitude: -25.8094444444444,
+            id: 2082
+        },
+        id: 81
+    }
+]
+</pre>
+</div>
+</div>
+{% endblock %}

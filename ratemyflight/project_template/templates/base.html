@@ -13,6 +13,18 @@
 
     {% block extra_head %}{% endblock %}
     {% include "includes/ga_code.html" %}
+    
+    <style>
+        #nav {width:200px; margin:0 auto 10px auto; white-space:nowrap;}
+        #nav li {display:inline; margin:0 10px;}
+        #nav a {font-size:16px;}
+        .content {padding:50px; font-size:18px; line-height:24px;}
+        .content h1, .content h2, .content p, .content pre {margin-bottom:20px;}
+        .content pre {background:#eee; padding:20px;}
+        .content h1 {font-size:30px;}
+        .content h2 {font-size:20px;}
+        .content ul {margin-left:50px;}
+    </style>
 
 </head>
 <body>
@@ -35,6 +47,12 @@
 			<div id="header">
 				<h1 class="logo">Rate My Flight</h1>
 			</div>
+			
+			<ul id="nav">
+			    <li><a href="{% url home %}">Home</a></li>
+			    <li><a href="{% url about %}">About</a></li>
+			    <li><a href="{% url api %}">API</a></li>
+			</ul>
 	
 			{% block main %}{% endblock %}
 			
