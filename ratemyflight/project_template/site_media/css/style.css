@@ -66,6 +66,8 @@ div.flight-info {
     border: 1px solid #000;
     margin-left: 20px;
     height: 70px;
+    -webkit-box-shadow: 4px 4px 4px #555;
+    -moz-box-shadow: 4px 4px 4px #555;
 }
 
 div.flight-info div.avatar {
