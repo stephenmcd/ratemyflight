@@ -151,6 +151,7 @@ alternatives may result in issues due to limited amount of testing over the
   * `Django 1.2`_
   * `nginx`_
   * `gunicorn`_
+  * `gunicorn-console`_
   * `Ubuntu`_
   * `Google Chrome`_ - `Firefox`_ showed various issues with `Google Maps`_. `Internet Explorer`_ surely won't render some elements.
   * `SQLite`_ - `MySQL`_ can be used but will raise an error while installing fixtures. In this case simply set the collation for the column ``ratemyflight_airline.name`` to unicode and re-run ``syncdb``.
@@ -166,6 +167,7 @@ alternatives may result in issues due to limited amount of testing over the
 .. _`Django 1.2`: http://djangoproject.com
 .. _`nginx`: http://nginx.net
 .. _`gunicorn`: http://gunicorn.org
+.. _`gunicorn-console`: http://pypi.python.org/pypi/gunicorn-console/
 .. _`Ubuntu`: http://ubuntu.com
 .. _`Google Chrome`: http://www.google.com/chrome/
 .. _`Firefox`: http://mozilla.com/firefox/
