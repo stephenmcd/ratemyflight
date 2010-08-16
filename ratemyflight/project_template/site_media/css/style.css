@@ -63,11 +63,11 @@ form.rate input[type="submit"]:hover { background: #65cce7; color: #212121; }
 div.flight-info {
     width: 190px;
     background: #fff;
-    border: 1px solid #000;
+    border: 1px solid #666;
     margin-left: 20px;
     height: 70px;
-    -webkit-box-shadow: 4px 4px 4px #555;
-    -moz-box-shadow: 4px 4px 4px #555;
+    -webkit-box-shadow: 0px 0px 10px #555;
+    -moz-box-shadow: 0px 0px 10px #555;
 }
 
 div.flight-info div.avatar {
@@ -99,3 +99,6 @@ div.flight-info div.rating div {
     overflow: hidden;
     height: 17px;
 }
+.flight-info h4 {color:#555;}
+.flight-info .codes {font-weight:bold;}
+
