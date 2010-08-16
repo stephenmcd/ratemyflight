@@ -39,12 +39,21 @@
 <div id="rankings">
 <ul>
     <li><h3>Top Airlines</h3></li>
+    {% for airline in top_airlines %}
+    <li>{{ airline }}</li>
+    {% endfor %}
 </ul>
 <ul>
     <li><h3>Top Destinations</h3></li>
+    {% for airport in top_destinations %}
+    <li>{{ airport }}</li>
+    {% endfor %}
 </ul>
 <ul class="last">
     <li><h3>Top Flyers</h3></li>
+    {% for username in top_flyers %}
+    <li>{{ username }}</li>
+    {% endfor %}
 </ul>
 <br clear="all" />
 </div>

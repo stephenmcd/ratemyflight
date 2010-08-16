@@ -7,7 +7,7 @@ from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 
 from ratemyflight.forms import RatingForm
-from ratemyflight.models import Airport, Rating
+from ratemyflight.models import Airline, Airport, Rating
 from ratemyflight.settings import MAX_AIRPORTS, MAX_FLIGHTS, TOP_LISTS_AMOUNT
 from ratemyflight.utils import flights_as_json
 
@@ -20,7 +20,15 @@ def home(request, template="index.html"):
     if request.method == "POST" and form.is_valid():
         form.save()
         return redirect(reverse("rating"))
-    context = {"form": form}
+    context = {
+        "form": form,
+        "top_airlines": Airline.objects.values_list("name", 
+            flat=True)[:TOP_LISTS_AMOUNT],
+        "top_destinations": Airport.objects.values_list("name", 
+            flat=True)[:TOP_LISTS_AMOUNT],
+        "top_flyers": Rating.objects.values_list("name", 
+            flat=True)[:TOP_LISTS_AMOUNT],
+    }
     return render_to_response(template, context, RequestContext(request))
 
 def airports_for_boundary(request, south, west, north, east):
