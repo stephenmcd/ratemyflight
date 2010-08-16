@@ -36,10 +36,9 @@
 			</div>
 			
 			<ul id="nav">
-			    <li class="active"><a href="{% url home %}">Home</a></li>
-			    <li><a href="{% url about %}">About</a></li>
-			    <li><a href="{% url api %}">API</a></li>
-				<li><a href="">Rate a flight</a></li>
+			    {% url home as home_url %}<li{% ifequal home_url request.path %} class="active"{% endifequal %}><a href="{{ home_url }}">Home</a></li>
+			    {% url about as about_url %}<li{% ifequal about_url request.path %} class="active"{% endifequal %}><a href="{{ about_url }}">About</a></li>
+			    {% url api as api_url %}<li{% ifequal api_url request.path %} class="active"{% endifequal %}><a href="{{ api_url }}">API</a></li>
 			</ul>
 	
 			{% block main %}{% endblock %}
