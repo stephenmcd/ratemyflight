@@ -107,9 +107,9 @@ function initialize() {
       
       var planeimage = new google.maps.MarkerImage(
       "/site_media/img/planes/" + Math.floor(deg) +  ".png",
-      new google.maps.Size(20, 20),
+      new google.maps.Size(24, 24),
       new google.maps.Point(0, 0),
-      new google.maps.Point(10, 10) );
+      new google.maps.Point(12, 12) );
     
     
       return (planeimage);
@@ -277,10 +277,10 @@ function initialize() {
     // THIS IS WHERE WE START THE ACTUAL INIT OF THE MAP ETC
 
     var airportimage = new google.maps.MarkerImage(
-      "/site_media/img/airport.png",
-      new google.maps.Size(24, 24),
+      "/site_media/img/airport2.png",
+      new google.maps.Size(27, 27),
       new google.maps.Point(0,0),
-      new google.maps.Point(12,12) );
+      new google.maps.Point(13,27) );
 
 
     var mapOptions = {
