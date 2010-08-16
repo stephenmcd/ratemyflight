@@ -13,6 +13,8 @@ urlpatterns = patterns("ratemyflight.views",
     url("^api/flight/username/(?P<username>.*)/$", 
         "flights_for_username", name="flights_for_username"),
     url("^api/flight/recent/$", "recent_flights", name="recent_flights"),
+    url("^about/", direct_to_template, {"template": "about.html"}, name="about"),
+    url("^api/", direct_to_template, {"template": "api.html"}, name="api"),
     url("^$", "home", name="home"),
 )
 
