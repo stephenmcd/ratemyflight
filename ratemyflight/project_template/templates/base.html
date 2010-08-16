@@ -13,6 +13,12 @@
 
     {% block extra_head %}{% endblock %}
     {% include "includes/ga_code.html" %}
+    
+    <style>
+        #nav {width:200px; margin:0 auto 10px auto; white-space:nowrap;}
+        #nav li {display:inline; margin:0 10px;}
+        #nav a {font-size:16px;}
+    </style>
 
 </head>
 <body>
@@ -35,6 +41,12 @@
 			<div id="header">
 				<h1 class="logo">Rate My Flight</h1>
 			</div>
+			
+			<ul id="nav">
+			    <li><a href="{% url home %}">Home</a></li>
+			    <li><a href="{% url about %}">About</a></li>
+			    <li><a href="{% url api %}">API</a></li>
+			</ul>
 	
 			{% block main %}{% endblock %}
 			
