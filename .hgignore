@@ -7,3 +7,5 @@ dist/*
 local_settings.py
 ratemyflight.egg-info/*
 
+glob:ratemyflight/project_template/site_media/img/airport4.png
+glob:ratemyflight/project_template/site_media/img/airport5.png

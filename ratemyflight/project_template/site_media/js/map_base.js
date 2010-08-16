@@ -277,10 +277,10 @@ function initialize() {
     // THIS IS WHERE WE START THE ACTUAL INIT OF THE MAP ETC
 
     var airportimage = new google.maps.MarkerImage(
-      "/site_media/img/airport5.png",
-      new google.maps.Size(20, 20),
+      "/site_media/img/airport6.png",
+      new google.maps.Size(10, 10),
       new google.maps.Point(0,0),
-      new google.maps.Point(10,10) );
+      new google.maps.Point(5,5) );
 
 
     var mapOptions = {
