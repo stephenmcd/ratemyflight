@@ -16,7 +16,7 @@ function GetHTMLForFlightTip(item) {
         '    <div class="avatar"><img src="' + item.avatar_url + '"/></div>' +
         '    <div class="flight">' +
         '        <h4>' + item.name + '</h4>' +
-        '        <p class="codes">' + from + ' -&gt; ' + dest + '</p>' + 
+        '        <p class="codes">' + from + ' &#x2708; ' + dest + '</p>' + 
         '        <p class="rating">' + item.value + '</p>' +
         '        <p class="comment">' + item.comment + '</p>' +
         '    </div>' +
