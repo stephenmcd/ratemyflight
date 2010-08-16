@@ -1,41 +1,21 @@
 html, body { height: 100%; }
 body { width: 100%; background: #e4fafe url("../img/bg.jpg") repeat-x 0 0; font-family: helvetica, arial, sans serif; font-size: 12px; position: relative; }
-
 #wrapper { width: 100%; min-height: 100%; margin: 0 auto -99px; background: url("../img/foot-cityscape.gif") repeat-x center bottom; }
 #foot, .push { height: 99px; clear: both; }
-#container { width: 960px; margin: 120px auto 0; background: #fff; 
-    -moz-box-shadow: 0px 0px 30px #999; 
-    -webkit-box-shadow: 0px 0px 30px #999; }
+#container { width: 960px; margin: 120px auto 0; background: #fff; -moz-box-shadow: 0px 0px 30px #999; -webkit-box-shadow: 0px 0px 30px #999; }
 #header { margin: 0 auto; height: 80px; position: relative; }
 #header h1.logo { position: absolute; top: -87px; left: 341px; display: block; width: 267px; height: 153px; margin: 0 auto; background: url("../img/ratemyflight.png") no-repeat 0 0; text-indent: -9999px; }
-
-#message { position: absolute; z-index: 30; width: 400px; top: -110px; 
-    right: 30px; background: #FFFCC3; text-align: left; 
-    -moz-box-shadow: 0px 0px 20px #999; 
-    -webkit-box-shadow: 0px 0px 20px #999; 
-    padding: 15px; margin-bottom: 20px; border: 1px solid #999;
-    font-size: 14px;}
-
-#message .close {float:right; text-decoration:none; font-size:18px; 
-    font-weight:bold; color:#000;}
-
-#message code {font-weight:bold;}
-
-#message h2 { margin: 0; font-size: 22px; margin-bottom: 10px; color: #000;  }
+#message { position: absolute; z-index: 30; width: 400px; top: -110px; right: 30px; background: #FFFCC3; text-align: left; -moz-box-shadow: 0px 0px 20px #999; -webkit-box-shadow: 0px 0px 20px #999; padding: 15px; margin-bottom: 20px; border: 1px solid #999; font-size: 14px; }
+#message .close { float:right; text-decoration:none; font-size:18px; font-weight:bold; color:#000; }
+#message code { font-weight:bold; }
+#message h2 { margin: 0; font-size: 22px; margin-bottom: 10px; color: #000; }
 #message p { line-height: 19px; margin-bottom: 6px; }
-#map_holder { position: relative; margin: 0 auto 20px; text-align: center;  border: 1px solid #231f20; background: #fff; }
+#map_holder { position: relative; margin: 0 auto 20px; text-align: center; border: 1px solid #231f20; background: #fff; }
 #map_canvas { height: 500px; }
 #map_data { width: 950px; padding: 4px; height: 20px; position: absolute; z-index: 3; top: 0; background: rgba(64, 64, 64, 0.5); text-align: right; color: #fff; }
-
-#map_holder .close {float:right; text-decoration:none; font-size:18px; 
-    font-weight:bold; color:#fff;}
-
-#form_rater { width: 350px; background: rgba(21, 21, 21, 0.95); 
-    position: absolute; z-index: 100; top: 20px; left: -100px; 
-    -moz-border-radius: 10px; border-radius: 10px;
-     border: 2px solid #fff; padding: 10px 20px; }
+#map_holder .close { float:right; text-decoration:none; font-size:18px; font-weight:bold; color:#fff; }
+#form_rater { width: 350px; background: rgba(21, 21, 21, 0.95); position: absolute; z-index: 100; top: 20px; left: -100px; -moz-border-radius: 10px; border-radius: 10px; border: 2px solid #fff; padding: 10px 20px; }
 #form_rater h2 { height: 30px; color: #fff; font-size: 21px; text-align: left; }
-
 /**div#form_rater {
     width: 500px;
     height: 40px;
@@ -44,7 +24,7 @@ body { width: 100%; background: #e4fafe url("../img/bg.jpg") repeat-x 0 0; font-
     position: absolute;
 }**/
 
-#footer { margin: 10px auto; text-align: center; }
+#footer { margin: 10px auto; text-align: center; font-size: 14px; color: #23536e;  }
 #footer > p { font-size: 18px; color: #231f20; }
 .cl { clear: both; }
 form.rate li { list-style: none; }
@@ -53,49 +33,32 @@ form.rate table { margin: 10px 0 0 30px; }
 form.rate th { text-align: right; vertical-align: top; }
 form.rate th, form.rate td { padding: 5px; color: #fff; }
 form.rate td { font-size: 10px; text-align: left; }
-form.rate input, form.rate select, form.rate textarea { width: 120px; height: 10px; padding: 5px; border: 2px solid #65cce7; -moz-border-radius: 5px; border-radius: 5px;  }
+form.rate input, form.rate select, form.rate textarea { width: 120px; height: 10px; padding: 5px; border: 2px solid #65cce7; -moz-border-radius: 5px; border-radius: 5px; }
 form.rate select { height: 25px; width: 135px; }
 form.rate textarea { height: 60px; }
 form.rate input[type="submit"] { height: 40px; margin: 10px 0 0 25px; font-size: 18px; color:#fff; background: #212121; cursor: pointer; }
 form.rate input[type="submit"]:hover { background: #65cce7; color: #212121; }
+div.flight-info { width: 190px; background: #fff; border: 1px solid #000; margin-left: 20px; height: 70px; -webkit-box-shadow: 4px 4px 4px #555; -moz-box-shadow: 4px 4px 4px #555; }
+div.flight-info div.avatar { float: left; width: 48px; padding-left: 2px; padding-top: 2px; }
+div.flight-info div.flight { width: 136px; float: right; background: #fff; text-align: left; padding: 2px; }
+#rankings { }
+#rankings h3 { font-size: 17px; color: #23536e; }
+#rankings ul { width:298px; float:left; list-style-type:none; margin:0 0 10px 20px; padding-bottom: 20px; border-right:1px solid #a7bac5; }
+#rankings .last { border-right-width:0px; }
+#rankings .topflyer-avatar { width: 25px; vertical-align: middle; margin-right: 7px; }
+#rankings li { font-size:16px; margin-top:5px; font-size: 12px; color: #0d84a9; }
+#rankings li:first-child { margin-bottom: 15px; }
+#rankings .ranking-icon { float: left; margin-right: 7px; }
+div.flight-info div.rating { background: url(/site_media/img/stars_g.png) no-repeat; text-align: left; }
+div.flight-info div.rating div { overflow: hidden; height: 17px; }
 
+#nav {width:200px; margin:0 auto 10px auto; white-space:nowrap;}
+#nav li {display:inline; margin:0 10px;}
+#nav a {font-size:16px;}
+.content {padding:50px; font-size:18px; line-height:24px;}
+.content h1, .content h2, .content p, .content pre {margin-bottom:20px;}
+.content pre {background:#eee; padding:20px;}
+.content h1 {font-size:30px;}
+.content h2 {font-size:20px;}
+.content ul {margin-left:50px;}
 
-div.flight-info {
-    width: 190px;
-    background: #fff;
-    border: 1px solid #000;
-    margin-left: 20px;
-    height: 70px;
-    -webkit-box-shadow: 4px 4px 4px #555;
-    -moz-box-shadow: 4px 4px 4px #555;
-}
-
-div.flight-info div.avatar {
-    float: left;
-    width: 48px;
-    padding-left: 2px;
-    padding-top: 2px;
-}
-div.flight-info div.flight {
-    width: 136px;
-    float: right;
-    background: #fff;
-    text-align: left;
-    padding: 2px;
-}
-
-#rankings {padding-left:40px;}
-#rankings ul {width:200px; float:left; list-style-type:none; 
-    margin:0 0 20px 80px; border-right:2px solid #71a9bd;}
-#rankings .last {border-right-width:0px !important;}
-#rankings li {font-size:16px; margin-top:5px;}
-
-div.flight-info div.rating { 
-    background: url(/site_media/img/stars_g.png) no-repeat;
-    text-align: left;
-}
-
-div.flight-info div.rating div {
-    overflow: hidden;
-    height: 17px;
-}

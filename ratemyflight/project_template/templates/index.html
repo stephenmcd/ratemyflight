@@ -26,7 +26,7 @@
 		<h2>Rate a flight</h2>
 		<form method="post" class="rate">
 			<table>{{ form.as_table }}</table>
-			<input type="submit" />
+			<input type="submit" value="Rate it" />
 		</form>
 	</div>
 </div>
@@ -37,21 +37,21 @@
 
 <div id="rankings">
 <ul>
-    <li><h3>Top Airlines</h3></li>
+    <li><img src="{{ MEDIA_URL }}img/icon-plane.gif" alt="" class="ranking-icon" /><h3>Top Airlines</h3></li>
     {% for airline in top_airlines %}
-    <li>{{ airline.name }} [Rating: {{ airline.rating }}]</li>
+    <li>{{forloop.counter}}. {{ airline.name }} [Rating: {{ airline.rating }}]</li>
     {% endfor %}
 </ul>
 <ul>
-    <li><h3>Top Destinations</h3></li>
+    <li><img src="{{ MEDIA_URL }}img/icon-star.gif" alt="" class="ranking-icon" /><h3>Top Destinations</h3></li>
     {% for airport in top_destinations %}
-    <li>{{ airport.name }} [Rating: {{ airport.rating }}]</li>
+    <li>{{forloop.counter}}. {{ airport.name }} [Rating: {{ airport.rating }}]</li>
     {% endfor %}
 </ul>
 <ul class="last">
-    <li><h3>Top Fliers</h3></li>
+    <li><img src="{{ MEDIA_URL }}img/icon-thumbup.gif" alt="" class="ranking-icon" /><h3>Top Fliers</h3></li>
     {% for flyer in top_flyers %}
-    <li><img src="{{ flyer.avatar_url }}">{{ flyer.name }} [Flights: {{ flyer.flights }}]</li>
+    <li><img src="{{ flyer.avatar_url }}" class="topflyer-avatar">{{ flyer.name }} [Flights: {{ flyer.flights }}]</li>
     {% endfor %}
 </ul>
 <br clear="all" />
