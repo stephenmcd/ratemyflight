@@ -13,24 +13,11 @@
 
     {% block extra_head %}{% endblock %}
     {% include "includes/ga_code.html" %}
-    
-    <style>
-        #nav {width:200px; margin:0 auto 10px auto; white-space:nowrap;}
-        #nav li {display:inline; margin:0 10px;}
-        #nav a {font-size:16px;}
-        .content {padding:50px; font-size:18px; line-height:24px;}
-        .content h1, .content h2, .content p, .content pre {margin-bottom:20px;}
-        .content pre {background:#eee; padding:20px;}
-        .content h1 {font-size:30px;}
-        .content h2 {font-size:20px;}
-        .content ul {margin-left:50px;}
-    </style>
-
 </head>
 <body>
 	<div id="wrapper">
 		<div id="message">
-		    <a class="close" href="#" onclick="$(this).parent().hide(); return false;">X</a>
+		    <a class="close" href="#" onClick="$(this).parent().hide(); return false;">X</a>
 			<h2>We need your flight data!</h2>
 			<p>
 			    Send a tweet with the hashtag <strong>#ratemyflight</strong> and give your 
