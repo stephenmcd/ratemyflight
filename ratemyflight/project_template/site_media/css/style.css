@@ -82,3 +82,9 @@ div.flight-info div.flight {
     padding: 2px;
 }
 
+#rankings {padding-left:40px;}
+#rankings ul {width:200px; float:left; list-style-type:none; 
+    margin:0 0 20px 80px; border-right:2px solid #71a9bd;}
+#rankings .last {border-right-width:0px !important;}
+#rankings li {font-size:16px; margin-top:5px;}
+
