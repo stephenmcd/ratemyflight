@@ -45,7 +45,7 @@ form.rate input[type="submit"]:hover { background: #65cce7; color: #212121; }
 #rankings ul { width:298px; float:left; list-style-type:none; margin:0 0 10px 20px; padding-bottom: 20px; border-right:1px solid #a7bac5; }
 #rankings .last { border-right-width:0px; }
 #rankings .topflyer-avatar { width: 25px; vertical-align: middle; margin-right: 7px; }
-#rankings li { font-size:16px; margin-top:5px; font-size: 12px; color: #0d84a9; }
+#rankings li { margin-top:5px; font-size: 15px; color: #0d84a9; height:30px;}
 #rankings li:first-child { margin-bottom: 15px; }
 #rankings .ranking-icon { float: left; margin-right: 7px; }
 
