@@ -82,3 +82,12 @@ div.flight-info div.flight {
     padding: 2px;
 }
 
+div.flight-info div.rating { 
+    background: url(/site_media/img/stars_g.png) no-repeat;
+    text-align: left;
+}
+
+div.flight-info div.rating div {
+    overflow: hidden;
+    height: 17px;
+}

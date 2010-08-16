@@ -10,6 +10,7 @@ function GetHTMLForFlightTip(item) {
     dest = item.airport_to.iata_code;
     if (dest == "N/A") dest = item.airport_to.icao_code;
     
+    ratingval = Math.floor(item.value * 10); // convert to a percentage
     
     content = 
         '<div class="flight-info">' +
@@ -17,8 +18,13 @@ function GetHTMLForFlightTip(item) {
         '    <div class="flight">' +
         '        <h4>' + item.name + '</h4>' +
         '        <p class="codes">' + from + ' &#x2708; ' + dest + '</p>' + 
-        '        <p class="rating">' + item.value + '</p>' +
         '        <p class="comment">' + item.comment + '</p>' +
+        '    </div>' +
+        '    <div class="cl"></div>' +
+        '    <div class="rating">' +
+        '        <div style="width:' + ratingval + '%">' +
+        '            <img src="/site_media/img/stars_c.png" style=""/>' +
+        '        </div>' +
         '    </div>' +
         '</div>';
 
