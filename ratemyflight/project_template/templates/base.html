@@ -36,9 +36,10 @@
 			</div>
 			
 			<ul id="nav">
-			    <li><a href="{% url home %}">Home</a></li>
+			    <li class="active"><a href="{% url home %}">Home</a></li>
 			    <li><a href="{% url about %}">About</a></li>
 			    <li><a href="{% url api %}">API</a></li>
+				<li><a href="">Rate a flight</a></li>
 			</ul>
 	
 			{% block main %}{% endblock %}

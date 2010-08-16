@@ -15,15 +15,12 @@ body { width: 100%; background: #e4fafe url("../img/bg.jpg") repeat-x 0 0; font-
 #map_data { width: 950px; padding: 4px; height: 20px; position: absolute; z-index: 3; top: 0; background: rgba(64, 64, 64, 0.5); text-align: right; color: #fff; }
 #map_holder .close { float:right; text-decoration:none; font-size:18px; font-weight:bold; color:#fff; }
 #form_rater { width: 350px; background: rgba(21, 21, 21, 0.95); position: absolute; z-index: 100; top: 20px; left: -100px; -moz-border-radius: 10px; border-radius: 10px; border: 2px solid #fff; padding: 10px 20px; }
-#form_rater h2 { height: 30px; color: #fff; font-size: 21px; text-align: left; }
+#form_rater h2 { height: 30px; color: #65CCE7; font-size: 21px; text-align: left; }
 
 div.content a, #footer a { text-decoration: none; color: #00bed4}
 div.content a:hover, #footer a:hover { text-decoration: underline;}
 div.content a:visited, #footer a:visited {color: #c73e3d;}
 
-
-#footer { margin: 10px auto; text-align: center; font-size: 14px; color: #23536e;  }
-#footer > p { font-size: 18px; color: #231f20; }
 
 
 .cl { clear: both; }
@@ -34,6 +31,7 @@ form.rate th { text-align: right; vertical-align: top; }
 form.rate th, form.rate td { padding: 5px; color: #fff; }
 form.rate td { font-size: 10px; text-align: left; }
 form.rate input, form.rate select, form.rate textarea { width: 120px; height: 10px; padding: 5px; border: 2px solid #65cce7; -moz-border-radius: 5px; border-radius: 5px; }
+
 form.rate select { height: 25px; width: 135px; }
 form.rate textarea { height: 60px; }
 form.rate input[type="submit"] { height: 40px; margin: 10px 0 0 25px; font-size: 18px; color:#fff; background: #212121; cursor: pointer; }
@@ -48,9 +46,16 @@ form.rate input[type="submit"]:hover { background: #65cce7; color: #212121; }
 #rankings li:first-child { margin-bottom: 15px; }
 #rankings .ranking-icon { float: left; margin-right: 7px; }
 
-#nav { width:200px; margin:0 auto 10px auto; white-space:nowrap; }
-#nav li { display:inline; margin:0 10px; }
-#nav a { font-size:16px; }
+#nav { width:100%; height: 53px; white-space:nowrap; background: url("../img/bg-nav.gif") repeat-x 0 0; }
+#nav li { height: 46px; display:inline-block; color: #fff; margin:7px 0 0 10px; padding: 15px 20px 0; background: #22627f; border-top-left-radius: 5px; border-top-right-radius: 5px;  }
+#nav li.active { background: #fff; }
+
+#nav li:hover { background: #23536e; }
+#nav a { font-size:16px; color: #fff; text-decoration: none; font-weight: bold; }
+#nav li.active a { color: #23536e; }
+#nav li.active a:hover { color: #fff; }
+#nav a:hover { color: #fff; }
+
 .content { padding:50px; font-size:18px; line-height:24px; }
 .content h1, .content h2, .content p, .content pre { margin-bottom:20px; }
 .content pre { background:#eee; padding:20px; }
